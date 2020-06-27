@@ -1,34 +1,38 @@
-const { MessageEmbed } = require('discord.js');
-module.exports = (client, msg) => {
+const ticker = require('../commands/ticker');
+const roll = require('../commands/roll');
+
+module.exports = async (client, msg) => {
     // Check first if message is bot
     if (!msg.author.bot) {
-        console.log(msg.author.username);
+        // Reactions to messages from humans
         // Check next if the message is from me
-        if (msg.author.username === "Halfcreative") {
-            console.log(msg.content);
-            if (msg.content === ":person_bowing:") {
-                console.log('bow');
-                msg.reply(':person_bowing');
-            }
-            if (msg.content.startsWith('viewAvatar')) {
-                console.log(msg.mentions.members);
-                const mention = msg.mentions.members.first();
-                msg.reply("as you wish, my master: " + mention.user.displayAvatarURL());
-            }
-            if (msg.content === 'ping') {
-                msg.reply('pong');
-                msg.reply('🙇');
-            }
-
-        } else {
-
+        const splitMessage = msg.content.split(' ');
+        switch (msg.author.username) {
+            case "Halfcreative":
+                // Commands for myself
+                if (msg.content.startsWith('.viewAvatar')) {
+                    console.log(msg.mentions.members);
+                    const mention = msg.mentions.members.first();
+                    msg.reply(mention.user.displayAvatarURL());
+                } else if (msg.content === '.ping') {
+                    msg.reply('pong');
+                    msg.reply('🙇');
+                }
+            default:
+                // Commands for all users
+                switch (splitMessage[0]) {
+                    case '.roll':
+                        roll(msg, splitMessage);
+                        break;
+                    case '.ticker':
+                        ticker(msg, splitMessage);
+                        break;
+                    default:
+                        break;
+                }
+                break;
         }
     } else {
-        if (msg.author.username === "Karuta") {
-            if (msg.content.endsWith("damaged")) {
-
-            }
-        }
+        // Reactions to messages from bots
     }
-
 }
