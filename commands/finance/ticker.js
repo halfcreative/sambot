@@ -15,9 +15,9 @@ module.exports = async function ticker(msg, splitMessage) {
                     priceInfoMessage = priceInfoMessage.concat(`pre-Market Price: ${quote.price.currencySymbol}${quote.price.preMarketPrice}\n`);
                 }
                 priceInfoMessage = priceInfoMessage.concat(`Market Price: ${quote.price.currencySymbol}${quote.price.regularMarketPrice}\n`);
-                priceInfoMessage = priceInfoMessage.concat(`Market Open: ${quote.price.regularMarketOpen}\n`);
-                priceInfoMessage = priceInfoMessage.concat(`Market High: ${quote.price.regularMarketDayHigh}\n`);
-                priceInfoMessage = priceInfoMessage.concat(`Market Low: ${quote.price.regularMarketDayLow}\n`);
+                priceInfoMessage = priceInfoMessage.concat(`Market Open: ${quote.price.currencySymbol}${quote.price.regularMarketOpen}\n`);
+                priceInfoMessage = priceInfoMessage.concat(`Market High: ${quote.price.currencySymbol}${quote.price.regularMarketDayHigh}\n`);
+                priceInfoMessage = priceInfoMessage.concat(`Market Low: ${quote.price.currencySymbol}${quote.price.regularMarketDayLow}\n`);
                 msg.channel.send(priceInfoMessage);
             } else {
                 throw new Error('Not a stock');
