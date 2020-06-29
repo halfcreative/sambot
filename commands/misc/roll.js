@@ -1,4 +1,5 @@
 const seedrandom = require('seedrandom');
+
 module.exports = function roll(msg, splitMessage) {
     const rng = seedrandom();
     if (splitMessage[1] == parseInt(splitMessage[1])) {
