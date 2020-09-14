@@ -40,5 +40,7 @@ module.exports = async (client, msg) => {
         }
     } else {
         // Reactions to messages from bots
+        console.log(msg);
+        console.log(splitMessage);
     }
 }
