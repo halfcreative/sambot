@@ -1,5 +1,4 @@
 module.exports = function dtimer(msg, splitMessage) {
-    const rng = seedrandom();
     if (splitMessage[1] == parseInt(splitMessage[1])) {
         let time = 1000 * 60 * parseInt(splitMessage[1]);
         msg.channel.send(`${msg.author}, setting timer for ${parseInt(splitMessage[1])} minutes.`);
