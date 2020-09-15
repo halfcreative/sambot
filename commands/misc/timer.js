@@ -3,7 +3,7 @@ module.exports = function dtimer(msg, splitMessage) {
         if (parseInt(splitMessage[1]) < 120) {
             let time = 1000 * 60 * parseInt(splitMessage[1]);
             msg.channel.send(`${msg.author}, setting timer for ${parseInt(splitMessage[1])} minutes.`);
-            let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 5 minutes. Grab now while you can.`); }, time);
+            let x = setTimeout(function () { msg.channel.send(`${msg.author}, your customer timer is now complete!`); }, time);
         } else {
             if (msg.author.username == "torinora") {
                 msg.reply("Why are you like this?");
