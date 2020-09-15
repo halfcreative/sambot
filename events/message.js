@@ -1,6 +1,7 @@
 const ticker = require('../commands/finance/ticker');
 const roll = require('../commands/misc/roll');
 const createChar = require('../commands/rpg/createChar');
+const dtimer = require('../commands/misc/timer');
 
 module.exports = async (client, msg) => {
     // Check first if message is bot
@@ -28,8 +29,8 @@ module.exports = async (client, msg) => {
                     case '.ticker':
                         ticker(msg, splitMessage);
                         break;
-                    case '.createChar':
-                        createChar(msg, splitMessage);
+                    case '.dtimer':
+                        dtimer(msg, splitMessage);
                         break;
                     default:
                         console.log(msg);
