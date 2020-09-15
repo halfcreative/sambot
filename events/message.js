@@ -32,6 +32,8 @@ module.exports = async (client, msg) => {
                     case '.dtimer':
                         dtimer(msg, splitMessage);
                         break;
+                    case '.ping':
+                        msg.reply('go fuck urself');
                     default:
                         console.log(msg);
                         console.log(splitMessage);
