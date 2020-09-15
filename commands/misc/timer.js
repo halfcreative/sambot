@@ -1,10 +1,18 @@
 module.exports = function dtimer(msg, splitMessage, timers) {
+    let timeTrackers = [];
     if (splitMessage[1] == parseInt(splitMessage[1])) {
         if (parseInt(splitMessage[1]) < 120) {
+            let exitingTimers = timers.filter((timerOBJ) => { return timerOBJ.author == msg.author });
+            if (exitingTimers.length > 0) {
+                msg.channel.send(`${msg.author}, you already have a timer set removing existing timer`);
+                clearTimeout(exitingTimers[0]);
+                timers = timers.filter((timerOBJ) => { return timerOBJ.author !== msg.author });
+            }
             let time = 1000 * 60 * parseInt(splitMessage[1]);
             msg.channel.send(`${msg.author}, setting timer for ${parseInt(splitMessage[1])} minutes.`);
-            let x = setTimeout(function () { msg.channel.send(`${msg.author}, your customer timer is now complete!`); }, time);
-            timers.push(x);
+            let x = setTimeout(function () { msg.channel.send(`${msg.author}, your custom timer is now complete!`); timers = timeTrackers.filter((timerOBJ) => { return timerOBJ.author != msg.author }) }, time);
+            let timerObj = { author: msg.author, timer: x };
+            timers.push(timerObj);
             msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
         } else {
             if (msg.author.username == "torinora") {
