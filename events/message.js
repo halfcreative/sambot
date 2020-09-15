@@ -33,8 +33,8 @@ module.exports = async (client, msg) => {
                         dtimer(msg, splitMessage);
                         break;
                     case '.ping':
-                        if (msg.author.username != "Halfcreative") {
-                            msg.reply('go fuck urself');
+                        if (msg.author.username != "torinora") {
+                            msg.reply('owo *notices ping*');
                         }
                     default:
                         console.log(msg);
