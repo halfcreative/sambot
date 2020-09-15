@@ -3,7 +3,7 @@ const roll = require('../commands/misc/roll');
 const createChar = require('../commands/rpg/createChar');
 const dtimer = require('../commands/misc/timer');
 
-module.exports = async (client, msg) => {
+module.exports = async (client, timers, msg) => {
     // Check first if message is bot
     if (!msg.author.bot) {
         // Reactions to messages from humans
@@ -30,22 +30,21 @@ module.exports = async (client, msg) => {
                         ticker(msg, splitMessage);
                         break;
                     case '.dtimer':
-                        dtimer(msg, splitMessage);
+                        dtimer(msg, splitMessage, timers);
                         break;
                     case '.ping':
                         if (msg.author.username == "torinora") {
                             msg.reply('owo *notices ping*');
                         }
                     default:
-                        console.log(msg);
-                        console.log(splitMessage);
+                        // console.log(msg);
+                        // console.log(splitMessage);
                         break;
                 }
                 break;
         }
     } else {
         // Reactions to messages from bots
-        console.log(msg);
-        console.log(splitMessage);
+        // console.log(msg);
     }
 }
