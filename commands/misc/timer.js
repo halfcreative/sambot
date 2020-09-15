@@ -27,6 +27,8 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         msg.channel.send(`${msg.author}, setting timer for 20 minutes.`);
         let y = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 15 minutes. 5 minutes 'till last call.`); }, timey);
         let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 10 minutes. Last call for a grab.`); }, timex);
+        timers.push(x);
+        timers.push(y);
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
     } else {
         msg.reply(':x: invalid input for .dtimer :x:');
