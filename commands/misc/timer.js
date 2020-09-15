@@ -32,8 +32,10 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         msg.channel.send(`${msg.author}, setting timer for 10 minutes.`);
         let y = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 10 minutes. 5 minutes 'till last call.`); }, timey);
         let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 5 minutes. Last call for a grab.`); timers = timeTrackers.filter((timerOBJ) => { return timerOBJ.author != msg.author }) }, timex);
-        timers.push(x);
-        timers.push(y);
+        let timerObjx = { author: msg.author, timer: x };
+        let timerObjy = { author: msg.author, timer: y };
+        timers.push(timerObjx);
+        timers.push(timerObjy);
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
     } else if (!splitMessage[1]) {
         let exitingTimers = timers.filter((timerOBJ) => { return timerOBJ.author == msg.author });
@@ -47,8 +49,10 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         msg.channel.send(`${msg.author}, setting timer for 20 minutes.`);
         let y = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 15 minutes. 5 minutes 'till last call.`); }, timey);
         let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 10 minutes. Last call for a grab.`); timers = timeTrackers.filter((timerOBJ) => { return timerOBJ.author != msg.author }) }, timex);
-        timers.push(x);
-        timers.push(y);
+        let timerObjx = { author: msg.author, timer: x };
+        let timerObjy = { author: msg.author, timer: y };
+        timers.push(timerObjx);
+        timers.push(timerObjy)
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
     } else {
         msg.reply(':x: invalid input for .dtimer :x:');
