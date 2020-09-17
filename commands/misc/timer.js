@@ -40,7 +40,16 @@ module.exports = function dtimer(msg, splitMessage, timers) {
     } else if (splitMessage[1] == "view") {
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
         for (let timer of timers) {
-            msg.channel.send(`Timer for ${timer.author} : ${timer.timer}`);
+            msg.channel.send(`Timer for ${timer.author} : ${timer.timer.time}`);
+        }
+    } else if (splitMessage[1] == "clear") {
+        let exitingTimers = timers.filter((timerOBJ) => { return timerOBJ.author == msg.author });
+        if (exitingTimers.length > 0) {
+            msg.channel.send(`Clearing out timers for ${msg.author}`);
+            clearTimeout(exitingTimers[0].timer);
+            timers = timers.filter((timerOBJ) => { return timerOBJ.author !== msg.author });
+        } else {
+            msg.channel.send(`${msg.author} has no running timers`);
         }
     } else if (!splitMessage[1]) {
         let exitingTimers = timers.filter((timerOBJ) => { return timerOBJ.author == msg.author });
