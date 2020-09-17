@@ -37,6 +37,11 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         timers.push(timerObjx);
         timers.push(timerObjy);
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
+    } else if (splitMessage[1] == "view") {
+        msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
+        for (let timer of timers) {
+            msg.channel.send(`Timer for ${timer.author} : ${timer.timer}`);
+        }
     } else if (!splitMessage[1]) {
         let exitingTimers = timers.filter((timerOBJ) => { return timerOBJ.author == msg.author });
         if (exitingTimers.length > 0) {
