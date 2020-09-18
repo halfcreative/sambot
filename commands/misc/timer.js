@@ -46,7 +46,9 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         let exitingTimers = timers.filter(timerOBJ => timerOBJ.author == msg.author);
         if (exitingTimers.length > 0) {
             msg.channel.send(`Clearing out timers for ${msg.author}`);
-            clearTimeout(exitingTimers[0].timer);
+            for (let timer of exitingTimers) {
+                clearTimeout(timer.timer);
+            }
             timers = timers.filter(timerOBJ => timerOBJ.author !== msg.author);
         } else {
             msg.channel.send(`${msg.author} has no running timers`);
