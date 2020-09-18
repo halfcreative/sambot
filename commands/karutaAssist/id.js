@@ -9,7 +9,7 @@ module.exports = function roll(msg, splitMessage) {
             } else {
                 for (let user of msg.mentions.users) {
                     console.log(user);
-                    msg.channel.send(`${user[1].userName} has a user id of ${user[1].id}`);
+                    msg.channel.send(`${user[1].username} has a user id of ${user[1].id}`);
                 }
             }
         }
