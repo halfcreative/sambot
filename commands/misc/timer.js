@@ -10,8 +10,8 @@ module.exports = function dtimer(msg, splitMessage, timers) {
             }
             let time = 1000 * 60 * parseInt(splitMessage[1]);
             msg.channel.send(`${msg.author}, setting timer for ${parseInt(splitMessage[1])} minutes.`);
-            let x = setTimeout(function () { msg.channel.send(`${msg.author}, your custom timer is now complete!`); timers = timers.filter(timerOBJ => timerOBJ.author !== msg.author) }, time);
-            let timerObj = { author: msg.author, timer: x };
+            let x = setTimeout(function () { msg.channel.send(`${msg.author}, your custom timer is now complete!`); timers = timers.filter(timerOBJ => timerOBJ.author.id !== msg.author.id) }, time);
+            let timerObj = { author: msg.author.id, timer: x };
             timers.push(timerObj);
             msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
         } else {
@@ -31,9 +31,9 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         let timey = 1000 * 60 * 5;
         msg.channel.send(`${msg.author}, setting timer for 10 minutes.`);
         let y = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 10 minutes. 5 minutes 'till last call.`); }, timey);
-        let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 5 minutes. Last call for a grab.`); timers = timers.filter(timerOBJ => timerOBJ.author !== msg.author) }, timex);
-        let timerObjx = { author: msg.author, timer: x };
-        let timerObjy = { author: msg.author, timer: y };
+        let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 5 minutes. Last call for a grab.`); timers = timers.filter(timerOBJ => timerOBJ.author.id !== msg.author.id) }, timex);
+        let timerObjx = { author: msg.author.id, timer: x };
+        let timerObjy = { author: msg.author.id, timer: y };
         timers.push(timerObjx);
         timers.push(timerObjy);
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
@@ -64,9 +64,9 @@ module.exports = function dtimer(msg, splitMessage, timers) {
         let timey = 1000 * 60 * 15;
         msg.channel.send(`${msg.author}, setting timer for 20 minutes.`);
         let y = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 15 minutes. 5 minutes 'till last call.`); }, timey);
-        let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 10 minutes. Last call for a grab.`); timers = timers.filter(timerOBJ => timerOBJ.author !== msg.author) }, timex);
-        let timerObjx = { author: msg.author, timer: x };
-        let timerObjy = { author: msg.author, timer: y };
+        let x = setTimeout(function () { msg.channel.send(`${msg.author}, your drop is ready in 10 minutes. Last call for a grab.`); timers = timers.filter(timerOBJ => timerOBJ.author.id !== msg.author.id) }, timex);
+        let timerObjx = { author: msg.author.id, timer: x };
+        let timerObjy = { author: msg.author.id, timer: y };
         timers.push(timerObjx);
         timers.push(timerObjy);
         msg.channel.send(`Sambot is currently tracking ${timers.length} timers`);
