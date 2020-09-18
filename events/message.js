@@ -1,6 +1,7 @@
 const ticker = require('../commands/finance/ticker');
 const roll = require('../commands/misc/roll');
 const id = require('../commands/karutaAssist/id');
+const lu = require('../commands/karutaAssist/lu');
 
 module.exports = async (client, timers, msg) => {
     // Check first if message is bot
@@ -18,6 +19,8 @@ module.exports = async (client, timers, msg) => {
                     msg.reply('pong');
                     msg.reply('🙇');
                     break;
+                case '.lu':
+                    lu(msg, splitMessage);
             }
         } else if (premiumUsers.includes(msg.author.id)) {
             //user is premium
