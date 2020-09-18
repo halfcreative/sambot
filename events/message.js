@@ -1,6 +1,6 @@
 const ticker = require('../commands/finance/ticker');
 const roll = require('../commands/misc/roll');
-const dtimer = require('../commands/misc/timer');
+const id = require('../commands/karutaAssist/id');
 
 module.exports = async (client, timers, msg) => {
     // Check first if message is bot
@@ -37,10 +37,11 @@ module.exports = async (client, timers, msg) => {
             case '.ticker':
                 ticker(msg, splitMessage);
                 break;
+            case '.id':
+                id(msg, splitMessage);
             default:
                 break;
         }
-
     } else {
         // Reactions to messages from bots
         // console.log(msg);
