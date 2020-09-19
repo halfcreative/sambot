@@ -60,6 +60,10 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                 case 'view':
                     if (isAdmin) {
                         msg.channel.send(`There ${timers.length == 1 ? 'is' : 'are'} ${timers.length} timer${timers.length == 1 ? '' : 's'} in the timer array.`);
+                        let notMyTimers = timers.filter(timer => timer.author.id != id);
+                        for (const timer of notMyTimers) {
+                            msg.channel.send(`1 timer for ${timer.author.username} with ${timer.reminders.length} reminder${timer.reminders.length == 1 ? '' : 's'}.`);
+                        }
                     }
                     if (userTimers[0]) {
                         msg.channel.send(`${msg.author}, you have 1 timer set, with ${userTimers[0].reminders.length} reminders.`);
