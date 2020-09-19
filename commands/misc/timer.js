@@ -51,7 +51,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                         reminders: [lastCallReminder, cutOffReminder],
                     }
                     timers.push(timer);
-                    msg.channel.send(`Timer has been set. You will recieve 2 reminders. A 'last call' reminder in 15 minutes, and a 'cutoff' reminder in 20.`);
+                    msg.channel.send(`Timer has been set. You will recieve 2 reminders. A 'last call' reminder in 5 minutes, and a 'cutoff' reminder in 10.`);
                     break;
                 case 'clear':
                     msg.channel.send('clearing out timers');
@@ -60,7 +60,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                 case 'view':
                     if (isAdmin) {
                         msg.channel.send(`There ${timers.length == 1 ? 'is' : 'are'} ${timers.length} timer${timers.length == 1 ? '' : 's'} in the timer array.`);
-                        let notMyTimers = timers.filter(timer => timer.author.id != id);
+                        let notMyTimers = timers.filter(timer => timer.author.id != msg.author.id);
                         for (const timer of notMyTimers) {
                             msg.channel.send(`1 timer for ${timer.author.username} with ${timer.reminders.length} reminder${timer.reminders.length == 1 ? '' : 's'}.`);
                         }
