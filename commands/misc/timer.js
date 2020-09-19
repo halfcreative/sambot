@@ -24,7 +24,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                     reminders: [timerReminder],
                 }
                 timers.push(timer);
-                msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minutes.`);
+                msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minute${minutes == 1 ? '' : 's'}.`);
             }
         } else {
             switch (splitMessage[1]) {
