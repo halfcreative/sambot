@@ -15,7 +15,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                 }
                 let timeNow = new Date();
                 const timerReminder = {
-                    timeout: setTimeout(function () { msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minutes.`); clearTimers(msg, msg.author.id); }, (minutes * 60 * 1000)),
+                    timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your custom timer is has completed.`); clearTimers(msg, msg.author.id); }, (minutes * 60 * 1000)),
                     dateSet: timeNow.toTimeString(),
                     dateEnd: new Date(timeNow.getTime() + (minutes * 60 * 1000))
                 }
@@ -24,6 +24,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                     reminders: [timerReminder],
                 }
                 timers.push(timer);
+                msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minutes.`);
             }
         } else {
             switch (splitMessage[1]) {
