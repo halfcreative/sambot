@@ -62,7 +62,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                         msg.channel.send(`There ${timers.length == 1 ? 'is' : 'are'} ${timers.length} timer${timers.length == 1 ? '' : 's'} in the timer array.`);
                         let notMyTimers = timers.filter(timer => timer.author.id != msg.author.id);
                         for (const timer of notMyTimers) {
-                            msg.channel.send(`1 timer for ${timer.author.username} with ${timer.reminders.length} reminder${timer.reminders.length == 1 ? '' : 's'}.`);
+                            msg.channel.send(`1 timer for ${timer.author.name} with ${timer.reminders.length} reminder${timer.reminders.length == 1 ? '' : 's'}.`);
                         }
                     }
                     if (userTimers[0]) {
