@@ -11,7 +11,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
             } else {
                 if (userTimers[0]) {
                     msg.channel.send(`You already have a timer set. Overwriting existing timer.`);
-                    clearTimers(msg.author.id);
+                    clearTimers(msg, msg.author.id);
                 }
                 let timeNow = new Date();
                 const timerReminder = {
@@ -52,7 +52,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
     } else {
         if (userTimers[0]) {
             msg.channel.send(`You already have a timer set. Overwriting existing timer.`);
-            clearTimers(msg.author.id);
+            clearTimers(msg, msg.author.id);
         }
         let timeNow = new Date();
         const lastCallReminder = {
