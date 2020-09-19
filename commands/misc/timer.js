@@ -8,16 +8,22 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
             let minutes = parseInt(splitMessage[1])
             if (minutes > 120) {
                 msg.channel.send(`Your input of ${splitMessage[1]} minutes exceeds the maximum time permitted (120 minutes).`);
-            }
-            let timeNow = new Date();
-            const timerReminder = {
-                timeout: setTimeout(function () { msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minutes.`); clearTimers(msg, msg.author.id); }, (minutes * 60 * 1000)),
-                dateSet: timeNow.toTimeString(),
-                dateEnd: new Date(timeNow.getTime() + (minutes * 60 * 1000))
-            }
-            const timer = {
-                author: { id: msg.author.id, name: msg.author.username },
-                reminders: [timerReminder],
+            } else {
+                if (userTimers[0]) {
+                    msg.channel.send(`You already have a timer set. Overwriting existing timer.`);
+                    clearTimers(msg.author.id);
+                }
+                let timeNow = new Date();
+                const timerReminder = {
+                    timeout: setTimeout(function () { msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minutes.`); clearTimers(msg, msg.author.id); }, (minutes * 60 * 1000)),
+                    dateSet: timeNow.toTimeString(),
+                    dateEnd: new Date(timeNow.getTime() + (minutes * 60 * 1000))
+                }
+                const timer = {
+                    author: { id: msg.author.id, name: msg.author.username },
+                    reminders: [timerReminder],
+                }
+                timers.push(timer);
             }
         } else {
             switch (splitMessage[1]) {
