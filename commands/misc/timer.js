@@ -36,12 +36,12 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
         const lastCallReminder = {
             timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 15 minutes. Last call to grab a card.`); }, 5000),
             dateSet: timeNow,
-            dateEnd: new Date(timeNow.getTime + 5000)
+            dateEnd: new Date(timeNow.getTime() + 5000)
         }
         const cutOffReminder = {
             timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 10 minutes. Avoid grabbing anything unless necessary.`); clearTimers(msg, msg.author.id); }, 10000),
             dateSet: timeNow.toTimeString(),
-            dateEnd: new Date(timeNow.getTime + 10000)
+            dateEnd: new Date(timeNow.getTime() + 10000)
         }
         const timer = {
             author: { id: msg.author.id, name: msg.author.username },
