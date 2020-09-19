@@ -5,7 +5,20 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
     if (splitMessage[1]) {
         if (splitMessage[1] == parseInt(splitMessage[1])) {
             // User input a number as a parameter
-
+            let minutes = parseInt(splitMessage[1])
+            if (minutes > 120) {
+                msg.channel.send(`Your input of ${splitMessage[1]} minutes exceeds the maximum time permitted (120 minutes).`);
+            }
+            let timeNow = new Date();
+            const timerReminder = {
+                timeout: setTimeout(function () { msg.channel.send(`${msg.author}, setting 1 timer with a reminder in ${minutes} minutes.`); clearTimers(msg, msg.author.id); }, (minutes * 60 * 1000)),
+                dateSet: timeNow.toTimeString(),
+                dateEnd: new Date(timeNow.getTime() + (minutes * 60 * 1000))
+            }
+            const timer = {
+                author: { id: msg.author.id, name: msg.author.username },
+                reminders: [timerReminder],
+            }
         } else {
             switch (splitMessage[1]) {
                 case 'clear':
@@ -19,12 +32,12 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                     if (userTimers[0]) {
                         msg.channel.send(`${msg.author}, you have 1 timer set, with ${userTimers[0].reminders.length} reminders.`);
                         for (const reminder of userTimers[0].reminders) {
-                            msg.channel.send(`1 reminder for ${reminder.dateEnd}`);
+                            msg.channel.send(`1 reminder for ${reminder.dateEnd}.`);
                         }
                         let timeNow = new Date();
-                        msg.channel.send(`The time now is ${timeNow}`);
+                        msg.channel.send(`The time now is ${timeNow}.`);
                     } else {
-                        msg.channel.send(`${msg.author}, you have no timers set`);
+                        msg.channel.send(`${msg.author}, you have no timers set.`);
                     }
                     break;
             }
@@ -66,6 +79,6 @@ function clearTimers(msg, id) {
         }
         timers = timers.filter(timer => timer.author.id != id)
     } else {
-        msg.channel.send(`No timers found for ${msg.author}`);
+        msg.channel.send(`No timers found for ${msg.author}.`);
     }
 }
