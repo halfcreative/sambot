@@ -41,7 +41,7 @@ module.exports = async (client, msg) => {
             case '.id':
                 id(msg, splitMessage);
             case '.dtimer':
-                timer(msg, splitmessage);
+                timer(msg, splitMessage);
             default:
                 break;
         }
