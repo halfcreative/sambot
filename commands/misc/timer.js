@@ -1,6 +1,7 @@
 
 var timers = [];
 module.exports = function dtimer(msg, splitMessage, isAdmin) {
+    let userTimers = timersForAuthor(msg.author.id);
     if (splitMessage[1]) {
         if (splitMessage[1] == parseInt(splitMessage[1])) {
             // User input a number as a parameter
@@ -9,25 +10,59 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
             switch (splitMessage[1]) {
                 case 'clear':
                     msg.channel.send('clearing out timers');
-                    clearTimers(msg.author.id);
+                    clearTimers(msg, msg.author.id);
                     // timers = timers.filter(timer => timer.author != msg.author.id);
                     break;
                 case 'view':
+
                     if (isAdmin) {
+                        msg.channel.send(`There are ${timers.length} timers in the timer array`);
+                    } else {
+
+
                     }
-                    msg.channel.send(`There are ${timers.length} timers in the timer array`);
                     break;
             }
         }
     } else {
-        let LastCallTimeout = setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 15 minutes. Last call to grab a card.`); }, 5000);
-        let Timeout = setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 10 minutes. Avoid grabbing anything unless necessary.`); clearTimers(msg.author.id); }, 10000);
-        timers.push({ author: msg.author.id, timer: Timeout });
-        timers.push({ author: msg.author.id, timer: LastCallTimeout });
-        msg.channel.send(`Setting 2 timers. You will recieve a 'last call' reminder in 15 minutes, and a 'cutoff' reminder in 20.`);
+        if (userTimers[0]) {
+            msg.channel.send(`You already have a timer set. Overwriting existing timer.`);
+            clearTimers(msg.author.id);
+        }
+        let timeNow = new Date();
+        let lastCallReminder = {
+            timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 15 minutes. Last call to grab a card.`); }, 5000),
+            dateSet: timeNow.now(),
+            dateEnd: timeNow.now() + 5000
+        }
+        let cutOffReminder = {
+            timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 10 minutes. Avoid grabbing anything unless necessary.`); clearTimers(msg, msg.author.id); }, 10000),
+            dateSet: timeNow.now(),
+            dateEnd: timeNow.now() + 10000
+        }
+        let timer = {
+            author: { id: msg.author.id, name: msg.author.username },
+            reminders: [lastCallReminder, cutOffReminder],
+
+        }
+
+        timers.push({ author: { id: msg.author.id, name: msg.author.username }, timer: Timeout });
+        timers.push({ author: { id: msg.author.id, name: msg.author.username }, timer: LastCallTimeout });
+        msg.channel.send(`Timer has been set. You will recieve 2 reminders. A 'last call' reminder in 15 minutes, and a 'cutoff' reminder in 20.`);
     }
 }
 
-function clearTimers(id) {
-    timers = timers.filter(timer => timer.author != id)
+function timersForAuthor(id) {
+    return timers.filter(timer => timer.author.id == id);
+}
+
+function clearTimers(msg, id) {
+    let timer = timersForAuthor(id);
+    if (timer.length > 0) {
+        for (const reminder of timer[0].reminders) {
+            clearTimeout(reminder.timeout);
+        }
+        timers = timers.filter(timer => timer.author.id != id)
+    }
+    msg.channel.send(`No timers found for ${msg.author}`);
 }
