@@ -11,16 +11,19 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                 case 'clear':
                     msg.channel.send('clearing out timers');
                     clearTimers(msg, msg.author.id);
-                    // timers = timers.filter(timer => timer.author != msg.author.id);
                     break;
                 case 'view':
-
                     if (isAdmin) {
                         msg.channel.send(`There are ${timers.length} timers in the timer array`);
-                    } else {
-
-
                     }
+
+                    if (userTimers[0]) {
+                        msg.channel.send(`${msg.author}, you have 1 timer set, with ${userTimers[0].reminders.length} reminders.`);
+                        for (const reminder of userTimers[0].reminders) {
+                            msg.channel.send(`1 reminder for ${reminder.dateEnd}`);
+                        }
+                    }
+
                     break;
             }
         }
@@ -33,12 +36,12 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
         const lastCallReminder = {
             timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 15 minutes. Last call to grab a card.`); }, 5000),
             dateSet: timeNow,
-            dateEnd: timeNow + 5000
+            dateEnd: new Date(timeNow.getTime + 5000).toTimeString()
         }
         const cutOffReminder = {
             timeout: setTimeout(function () { msg.channel.send(`${msg.author}, your drop will come up in 10 minutes. Avoid grabbing anything unless necessary.`); clearTimers(msg, msg.author.id); }, 10000),
-            dateSet: timeNow,
-            dateEnd: timeNow + 10000
+            dateSet: timeNow.toTimeString(),
+            dateEnd: new Date(timeNow.getTime + 10000).toTimeString()
         }
         const timer = {
             author: { id: msg.author.id, name: msg.author.username },
