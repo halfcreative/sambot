@@ -45,7 +45,7 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
             reminders: [lastCallReminder, cutOffReminder],
         }
 
-        timers.push({ author: { id: msg.author.id, name: msg.author.username }, timer: timer });
+        timers.push(timer);
         msg.channel.send(`Timer has been set. You will recieve 2 reminders. A 'last call' reminder in 15 minutes, and a 'cutoff' reminder in 20.`);
     }
 }
