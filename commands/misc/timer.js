@@ -14,13 +14,15 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
                     break;
                 case 'view':
                     if (isAdmin) {
-                        msg.channel.send(`There are ${timers.length} timers in the timer array`);
+                        msg.channel.send(`There ${timers.length == 1 ? 'is' : 'are'} ${timers.length} timer${timers.length == 1 ? '' : 's'} in the timer array.`);
                     }
                     if (userTimers[0]) {
                         msg.channel.send(`${msg.author}, you have 1 timer set, with ${userTimers[0].reminders.length} reminders.`);
                         for (const reminder of userTimers[0].reminders) {
                             msg.channel.send(`1 reminder for ${reminder.dateEnd}`);
                         }
+                        let timeNow = new Date();
+                        msg.channel.send(`The time now is ${timeNow}`);
                     } else {
                         msg.channel.send(`${msg.author}, you have no timers set`);
                     }
