@@ -2,8 +2,9 @@ const ticker = require('../commands/finance/ticker');
 const roll = require('../commands/misc/roll');
 const id = require('../commands/karutaAssist/id');
 const lu = require('../commands/karutaAssist/lu');
+const timer = require('../commands/misc/timer');
 
-module.exports = async (client, timers, msg) => {
+module.exports = async (client, msg) => {
     // Check first if message is bot
     if (!msg.author.bot) {
 
@@ -42,6 +43,8 @@ module.exports = async (client, timers, msg) => {
                 break;
             case '.id':
                 id(msg, splitMessage);
+            case '.dtimer':
+                timer(msg, splitmessage);
             default:
                 break;
         }

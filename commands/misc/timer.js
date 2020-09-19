@@ -1,5 +1,6 @@
-module.exports = function dtimer(msg, splitMessage, timers) {
-    console.log("timers", timers);
+
+var timers = [];
+module.exports = function dtimer(msg, splitMessage) {
     if (splitMessage[1] == parseInt(splitMessage[1])) {
         if (parseInt(splitMessage[1]) < 120) {
             let exitingTimers = timers.filter((timerOBJ) => { return timerOBJ.author == msg.author });
