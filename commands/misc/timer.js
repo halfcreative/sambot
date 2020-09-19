@@ -60,6 +60,7 @@ function clearTimers(msg, id) {
             clearTimeout(reminder.timeout);
         }
         timers = timers.filter(timer => timer.author.id != id)
+    } else {
+        msg.channel.send(`No timers found for ${msg.author}`);
     }
-    msg.channel.send(`No timers found for ${msg.author}`);
 }
