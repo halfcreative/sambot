@@ -1,7 +1,6 @@
 const ticker = require('../commands/finance/ticker');
 const roll = require('../commands/misc/roll');
 const id = require('../commands/karutaAssist/id');
-const lu = require('../commands/karutaAssist/lu');
 const timer = require('../commands/misc/timer');
 
 module.exports = async (client, msg) => {
@@ -20,8 +19,6 @@ module.exports = async (client, msg) => {
                     msg.reply('pong');
                     msg.reply('🙇');
                     break;
-                case '.lu':
-                    lu(msg, splitMessage);
             }
         } else if (premiumUsers.includes(msg.author.id)) {
             //user is premium
