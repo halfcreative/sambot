@@ -12,7 +12,10 @@ module.exports = async (client, msg) => {
 
         const splitMessage = msg.content.split(' ');
 
-        if (adminUsers.includes(msg.author.id)) {
+        var isAdmin = adminUsers.includes(msg.author.id);
+        var isPremium = premiumUsers.includes(msg.author.id);
+
+        if (isAdmin) {
             //user is admin
             switch (splitMessage[0]) {
                 case '.ping':
@@ -20,7 +23,7 @@ module.exports = async (client, msg) => {
                     msg.reply('🙇');
                     break;
             }
-        } else if (premiumUsers.includes(msg.author.id)) {
+        } else if (isPremium) {
             //user is premium
             switch (splitMessage[0]) {
                 case '.ping':
@@ -41,7 +44,7 @@ module.exports = async (client, msg) => {
             case '.id':
                 id(msg, splitMessage);
             case '.dtimer':
-                timer(msg, splitMessage);
+                timer(msg, splitMessage, isAdmin);
             default:
                 break;
         }
