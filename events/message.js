@@ -2,6 +2,7 @@ const ticker = require('../commands/finance/ticker');
 const roll = require('../commands/misc/roll');
 const id = require('../commands/karutaAssist/id');
 const timer = require('../commands/misc/timer');
+const sub = require('../commands/karutaAssist/sub');
 
 
 var serverNotificationSubscribers = [];
@@ -47,6 +48,8 @@ module.exports = async (client, msg) => {
                 id(msg, splitMessage);
             case '.dtimer':
                 timer(msg, splitMessage, isAdmin);
+            case '.dsub':
+                serverNotificationSubscribers = sub(serverNotificationSubscribers, msg, splitMessage);
             default:
                 break;
         }
@@ -54,8 +57,8 @@ module.exports = async (client, msg) => {
         // Reactions to messages from bots
         // console.log(msg);
         let serverDrop = checkForServerDrop(msg);
-        if (serverNotificationSubscribers > 0) {
-            if (serverDrop) {
+        if (serverDrop) {
+            if (serverNotificationSubscribers > 0) {
                 let string;
                 for (const user of serverNotificationSubscribers) {
                     string += `${user}, `
@@ -76,8 +79,4 @@ function checkForServerDrop(msg) {
         }
     }
     return serverDrop;
-}
-
-function subscribeToServerDrop(subscribers, user) {
-
 }

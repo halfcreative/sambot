@@ -1,4 +1,4 @@
-module.exports = function roll(msg, splitMessage) {
+module.exports = function id(msg, splitMessage) {
     console.log('msg', msg);
     if (splitMessage[1]) {
         console.log(splitMessage[1]);
