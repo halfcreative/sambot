@@ -64,6 +64,7 @@ module.exports = async (client, msg) => {
                     string += `${user}, `
                 }
                 string += ` Karuta is dropping a server drop`;
+                msg.channel.send(string);
             }
         } else {
             // msg.channel.send('No one to notify');
