@@ -3,6 +3,8 @@ const roll = require('../commands/misc/roll');
 const id = require('../commands/karutaAssist/id');
 const timer = require('../commands/misc/timer');
 
+
+var serverNotificationSubscribers = [];
 module.exports = async (client, msg) => {
     // Check first if message is bot
     if (!msg.author.bot) {
@@ -51,5 +53,11 @@ module.exports = async (client, msg) => {
     } else {
         // Reactions to messages from bots
         // console.log(msg);
+        checkForServerDrop(msg);
     }
+}
+
+function checkForServerDrop(msg) {
+    console.log(msg);
+    return
 }
