@@ -76,8 +76,7 @@ function checkForServerDrop(msg) {
     let serverDrop = false;
     if (msg.content) {
         console.log(msg.content);
-        console.log(msg.content.split(' ')[0]);
-        if (msg.content.split(' ')[0] == "I'm") {
+        if (msg.content == "I\'m dropping 4 cards since this server is currently active!") {
             serverDrop = true;
         }
     }
