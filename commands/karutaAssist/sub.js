@@ -6,7 +6,7 @@ module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitm
             case 'unsub':
             case 'break':
                 msg.channel.send(`Unsubscribing from server drop notifications`);
-                updatedSubscribers = currentSubscribers.filter(subscriber => subscriber.id != user.id);
+                updatedSubscribers = currentSubscribers.filter(subscriber => subscriber.id != msg.author.id);
                 break;
             case 'view':
                 if (admin) {
