@@ -40,5 +40,5 @@ function checkForUser(array, user) {
     console.log(array);
     console.log(user);
     let subbedArray = array.filter(subscriber => subscriber.id == user.id);
-    return subbedArray > 0;
+    return subbedArray.length > 0;
 }
