@@ -75,6 +75,8 @@ module.exports = async (client, msg) => {
 function checkForServerDrop(msg) {
     let serverDrop = false;
     if (msg.content) {
+        console.log(msg.content);
+        console.log(msg.content.split(' ')[0]);
         if (msg.content.split(' ')[0] == "I'm") {
             serverDrop = true;
         }
