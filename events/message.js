@@ -53,11 +53,25 @@ module.exports = async (client, msg) => {
     } else {
         // Reactions to messages from bots
         // console.log(msg);
-        checkForServerDrop(msg);
+        let serverDrop = checkForServerDrop(msg);
+        if (serverNotificationSubscribers > 0) {
+            if (serverDrop) {
+                let string;
+                for (const user of serverNotificationSubscribers) {
+                    string += `${user}, `
+                }
+                string += ` Karuta is dropping a server drop`;
+            }
+        } else {
+            msg.channel.send('No one to notify');
+        }
     }
 }
 
 function checkForServerDrop(msg) {
-    console.log(msg);
-    return
+    let serverDrop = false;
+    if (msg.author.content.split(' ')[0] == "I'm") {
+        serverDrop = true;
+    }
+    return serverDrop;
 }
