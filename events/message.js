@@ -59,7 +59,7 @@ module.exports = async (client, msg) => {
         let serverDrop = checkForServerDrop(msg);
         if (serverDrop) {
             console.log(`Number of subs ${serverNotificationSubscribers.length}`);
-            if (serverNotificationSubscribers > 0) {
+            if (serverNotificationSubscribers.length > 0) {
                 let string;
                 for (const user of serverNotificationSubscribers) {
                     string += `${user}, `
