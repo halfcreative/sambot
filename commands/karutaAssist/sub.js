@@ -1,4 +1,4 @@
-module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitmsg) {
+module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitmsg, admin) {
     let updatedSubscribers = currentSubscribers;
 
     if (splitmsg[1]) {
@@ -7,6 +7,17 @@ module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitm
             case 'break':
                 msg.channel.send(`Unsubscribing from server drop notifications`);
                 updatedSubscribers = currentSubscribers()
+                break;
+            case 'view':
+                if (admin) {
+                    msg.channel.send(`Current subscriber count is ${updatedSubscribers.length}`);
+                    msg.channel.send(`Current subscriber list :`);
+                    for (const subber of updatedSubscribers) {
+                        msg.channel.send(` - ${subber.username}`);
+                    }
+                } else {
+                    msg.channel.send(`You do not have permissions for that command`);
+                }
                 break;
             default:
                 msg.channel.send(`Invalid arguements for command dsub`)
