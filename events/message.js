@@ -58,6 +58,7 @@ module.exports = async (client, msg) => {
         // console.log(msg);
         let serverDrop = checkForServerDrop(msg);
         if (serverDrop) {
+            console.log(`Number of subs ${serverNotificationSubscribers.length}`);
             if (serverNotificationSubscribers > 0) {
                 let string;
                 for (const user of serverNotificationSubscribers) {
@@ -80,5 +81,6 @@ function checkForServerDrop(msg) {
             serverDrop = true;
         }
     }
+    console.log(`Is this a server Drop?, ${serverDrop}`);
     return serverDrop;
 }
