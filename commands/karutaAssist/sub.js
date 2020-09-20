@@ -24,7 +24,7 @@ module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitm
                 break;
         }
     } else {
-        let subbed = checkForUser(currentSubscribers, msg.author);
+        let subbed = checkForUser(updatedSubscribers, msg.author);
         if (subbed) {
             msg.channel.send(`${msg.author}, you are already subscribed to server drops.`);
         } else {
@@ -37,6 +37,8 @@ module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitm
 }
 
 function checkForUser(array, user) {
+    console.log(array);
+    console.log(user);
     let subbedArray = array.filter(subscriber => subscriber.id == user.id);
     return subbedArray > 0;
 }
