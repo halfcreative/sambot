@@ -63,7 +63,7 @@ module.exports = async (client, msg) => {
                 string += ` Karuta is dropping a server drop`;
             }
         } else {
-            msg.channel.send('No one to notify');
+            // msg.channel.send('No one to notify');
         }
     }
 }
@@ -76,4 +76,8 @@ function checkForServerDrop(msg) {
         }
     }
     return serverDrop;
+}
+
+function subscribeToServerDrop(subscribers, user) {
+
 }
