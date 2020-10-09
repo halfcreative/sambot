@@ -14,8 +14,7 @@ module.exports = {
         } catch (e) {
             console.log(e);
         } finally {
-
-            client.close();
+            await client.close();
         }
         return results;
     },
