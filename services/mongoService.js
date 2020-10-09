@@ -16,7 +16,7 @@ module.exports = {
             const userIsDevoted = await collection.findOne({ 'user': user.id });
             console.log(userIsDevoted);
             const now = Date.now();
-            if (userIsDevoted?.lastPrayed < now + 60000) {
+            if (userIsDevoted && userIsDevoted.lastPrayed < now + 60000) {
                 returnObj.userPrayObj = userIsDevoted;
             } else {
                 const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: new Date().now() } }, { upsert: true });
