@@ -46,10 +46,13 @@ module.exports = async (client, msg) => {
                 break;
             case '.id':
                 id(msg, splitMessage);
+                break;
             case '.dtimer':
                 timer(msg, splitMessage, isAdmin);
+                break;
             case '.dsub':
                 serverNotificationSubscribers = sub(serverNotificationSubscribers, msg, splitMessage, isAdmin);
+                break;
             default:
                 break;
         }
