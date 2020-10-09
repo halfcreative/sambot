@@ -16,7 +16,7 @@ module.exports = {
             const userIsDevoted = await collection.findOne({ 'user': user.id });
             const now = Date.now();
             console.log("last played :", userIsDevoted.lastPrayed);
-            console.log("last played :", now);
+            console.log("now :", now);
             if (userIsDevoted && userIsDevoted.lastPrayed > (now - 60000)) {
                 returnObj.userPrayObj = userIsDevoted;
             } else {
