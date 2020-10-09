@@ -1,7 +1,7 @@
 const { pray } = require("../../services/mongoService");
 
-module.exports = function prayer(msg) {
-    let results = pray(msg.auther);
+module.exports = async function prayer(msg) {
+    let results = await pray(msg.auther);
     console.log(results);
     msg.channel.send('Praise Craig! Praise Brian!');
 }
