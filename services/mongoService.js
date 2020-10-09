@@ -9,10 +9,14 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("prayers");
-            const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 } }, { upsert: true });
-            console.log(results);
-            prayers = await collection.findOne({ 'user': user.id });
-            console.log(prayers);
+            const userIsDevoted = collection.findOne({ 'user': user.id });
+            const now = new Date().now();
+            if (userIsDevoted.lastPrayed < now + 60000) {
+                const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: new Date().now() } }, { upsert: true });
+                prayers = await collection.findOne({ 'user': user.id });
+                console.log(results);
+                console.log(prayers);
+            }
         } catch (e) {
             console.log(e);
         } finally {
