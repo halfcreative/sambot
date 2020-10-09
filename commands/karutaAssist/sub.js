@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitmsg, admin) {
     let updatedSubscribers = currentSubscribers;
 
@@ -11,10 +13,14 @@ module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitm
             case 'view':
                 if (admin) {
                     msg.channel.send(`Current subscriber count is ${updatedSubscribers.length}`);
-                    msg.channel.send(`Current subscriber list :`);
+                    const subscribersList = new MessageEmbed();
+                    subscribersList.setTitle('Current Subscriber List');
+                    let list = '';
                     for (const subber of updatedSubscribers) {
-                        msg.channel.send(` - ${subber.username}`);
+                        list += `- ${subber.username} \n`;
                     }
+                    subscribersList.setDescription(list);
+                    msg.channel.send(subscribersList);
                 } else {
                     msg.channel.send(`You do not have permissions for that command`);
                 }
