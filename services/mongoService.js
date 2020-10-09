@@ -14,9 +14,9 @@ module.exports = {
             await client.connect();
             const collection = client.db("sambot").collection("prayers");
             const userIsDevoted = await collection.findOne({ 'user': user.id });
-            console.log(userIsDevoted);
             const now = Date.now();
-            console.log(now);
+            console.log("last played :", userIsDevoted.lastPrayed);
+            console.log("last played :", now);
             if (userIsDevoted && userIsDevoted.lastPrayed > (now - 60000)) {
                 returnObj.userPrayObj = userIsDevoted;
             } else {
