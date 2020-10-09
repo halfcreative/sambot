@@ -1,10 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://sam:sam@cluster0.rhfb4.mongodb.net/sambot?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 module.exports = {
 
     pray: async function (user) {
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         let results = null;
         try {
             await client.connect();
