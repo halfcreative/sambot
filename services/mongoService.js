@@ -9,7 +9,7 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("prayers");
-            results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 } });
+            results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 } }, { upsert: true });
             console.log(results);
         } catch (e) {
             console.log(e);
