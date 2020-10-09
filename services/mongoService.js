@@ -5,18 +5,20 @@ module.exports = {
 
     pray: async function (user) {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        let results = null;
+        let prayers = null;
         try {
             await client.connect();
             const collection = client.db("sambot").collection("prayers");
-            results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 } }, { upsert: true });
+            const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 } }, { upsert: true });
             console.log(results);
+            prayers = await collection.findOne({ 'user': user.id });
+            console.log(prayers);
         } catch (e) {
             console.log(e);
         } finally {
             await client.close();
         }
-        return results;
+        return prayers;
     },
 
 }
