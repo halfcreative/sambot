@@ -3,6 +3,7 @@ const roll = require('../commands/misc/roll');
 const id = require('../commands/karutaAssist/id');
 const timer = require('../commands/misc/timer');
 const sub = require('../commands/karutaAssist/sub');
+const prayer = require('../commands/karutaAssist/pray');
 
 
 var serverNotificationSubscribers = [];
@@ -49,6 +50,9 @@ module.exports = async (client, msg) => {
                 break;
             case '.dtimer':
                 timer(msg, splitMessage, isAdmin);
+                break;
+            case '.pray':
+                prayer(msg);
                 break;
             case '.dsub':
                 serverNotificationSubscribers = sub(serverNotificationSubscribers, msg, splitMessage, isAdmin);

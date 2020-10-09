@@ -4,18 +4,12 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 module.exports = {
 
-    saveChar: async function (player, character) {
+    pray: async function (user) {
         await client.connect();
-        const collection = client.db("rpg").collection("character");
-        await collection.updateOne({ 'player': player.id }, { $set: { name: character.getName() } }, { upsert: true });
+        const collection = client.db("sambot").collection("prayers");
+        const results = await collection.updateOne({ 'user': player.id }, { $inc: { prayers: 1 } });
         client.close();
+        return results;
     },
-    getChar: async function (player) {
-        await client.connect();
-        const collection = client.db("rpg").collection("character");
-        const character = await collection.findOne({ player: player.id });
-        // perform actions on the collection object
-        client.close();
-        return character;
-    }
+
 }
