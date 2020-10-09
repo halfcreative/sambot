@@ -6,7 +6,7 @@ module.exports = {
 
     pray: async function (user) {
         try {
-            client.connect();
+            await client.connect();
             const collection = client.db("sambot").collection("prayers");
             const results = await collection.updateOne({ 'user': player.id }, { $inc: { prayers: 1 } });
             client.close();
