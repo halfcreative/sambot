@@ -15,11 +15,12 @@ module.exports = {
             const collection = client.db("sambot").collection("prayers");
             const userIsDevoted = await collection.findOne({ 'user': user.id });
             console.log(userIsDevoted);
-            const now = new Date();
-            if (userIsDevoted && userIsDevoted.lastPrayed < now.now() + 60000) {
+            const now = Date.now();
+            console.log(now);
+            if (userIsDevoted && userIsDevoted.lastPrayed < now + 60000) {
                 returnObj.userPrayObj = userIsDevoted;
             } else {
-                const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: now.now() } }, { upsert: true });
+                const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: now } }, { upsert: true });
                 returnObj.userPrayObj = await collection.findOne({ 'user': user.id });
                 returnObj.success = true;
             }
