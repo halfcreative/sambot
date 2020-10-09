@@ -5,11 +5,15 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 module.exports = {
 
     pray: async function (user) {
-        client.connect();
-        const collection = client.db("sambot").collection("prayers");
-        const results = await collection.updateOne({ 'user': player.id }, { $inc: { prayers: 1 } });
-        client.close();
-        return results;
+        try {
+            client.connect();
+            const collection = client.db("sambot").collection("prayers");
+            const results = await collection.updateOne({ 'user': player.id }, { $inc: { prayers: 1 } });
+            client.close();
+            return results;
+        } catch (e) {
+            console.log(e);
+        }
     },
 
 }
