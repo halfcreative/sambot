@@ -20,6 +20,6 @@ module.exports = async function prayer(msg) {
     } else {
         const now = Date.now();
         msg.channel.send(` ${msg.author}, you are praying too much. You must wait ${((results.userPrayObj.lastPrayed + 300000) - now) / 1000} seconds before praying again`);
-        msg.channel.send(`Your devotion level is ${results.userPrayObj.prayers}`);
+        msg.channel.send(`Your devotion level is ${results.userPrayObj.prayers} and your rank is ${results.userPrayObj.rank}`);
     }
 }
