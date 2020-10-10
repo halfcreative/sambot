@@ -53,7 +53,7 @@ function rankings(count) {
         return 'Low Priest';
     } else if (count > 250) {
         return 'Devotee';
-    } else if (count > 100) {
+    } else if (count > 125) {
         return 'Follower';
     } else if (count > 50) {
         return 'Peasant';
