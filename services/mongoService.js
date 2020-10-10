@@ -25,7 +25,6 @@ module.exports = {
                     returnObj.rankUpgrade = true;
                 }
                 returnObj.success = true;
-
             }
         } catch (e) {
             console.log(e);
