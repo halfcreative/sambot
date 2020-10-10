@@ -10,7 +10,7 @@ module.exports = async function prayer(msg) {
         let message = `You are now devotion level ${results.userPrayObj.prayers} \n`;
         if (results.rankUpgrade) {
             message += `*notices your rank* OwO wHat's THIS???? You got a new rank UwU ! \n`;
-            message += `Your rank is now ${results.userPrayObj.rank}`;
+            message += `Your rank is now ${results.userPrayObj.rank}\n`;
             message += `uwu owo uwu`;
         } else {
             message += `Your rank is ${results.userPrayObj.rank}`;
