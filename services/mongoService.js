@@ -19,7 +19,11 @@ module.exports = {
             if (userIsDevoted && userIsDevoted.lastPrayed > (now - 300000)) {
                 returnObj.userPrayObj = userIsDevoted;
             } else {
-                const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: now, rank: rankings((userIsDevoted.prayers + 1)) } }, { upsert: true });
+                if (userIsDevoted) {
+                    const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: now, rank: rankings((userIsDevoted.prayers + 1)) } }, { upsert: true });
+                } else {
+                    const results = await collection.updateOne({ 'user': user.id }, { $inc: { prayers: 1 }, $set: { lastPrayed: now, rank: rankings(1) } }, { upsert: true });
+                }
                 returnObj.userPrayObj = await collection.findOne({ 'user': user.id });
                 if (userIsDevoted.rank != returnObj.userPrayObj.rank) {
                     returnObj.rankUpgrade = true;
