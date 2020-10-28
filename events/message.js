@@ -76,6 +76,7 @@ module.exports = async (client, msg) => {
             }
         } else {
             // msg.channel.send('No one to notify');
+            console.log(msg);
         }
     }
 }
