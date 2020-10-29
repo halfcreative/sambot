@@ -9,7 +9,7 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
-            users = await collection.find({ 'userId': true }).toArray();
+            users = (await collection.find({ 'userId': true })).toArray();
         } catch (error) {
             console.log(error);
         } finally {
