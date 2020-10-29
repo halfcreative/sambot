@@ -3,6 +3,30 @@ const uri = process.env.MONGO_URL;
 
 module.exports = {
 
+
+    clanAttack: async function () {
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        let result;
+        try {
+            await client.connect();
+            const collection = client.db("sambot").collection("clanRecord");
+            const attackRecord = await collection.findOne({ 'clanRecordType': 'attack' });
+            const now = Date.now();
+            if (attackRecord.lastAttacked > (now - 18000000)) {
+                console.log("attacking so soon?");
+                // Working on a new attack cycle
+                result = await collection.updateOne({ 'clanRecordType': 'attack' }, { $set: { lastAttacked: now } }, { upsert: true });
+            } else {
+                result = await collection.updateOne({ 'clanRecordType': 'attack' }, { $inc: { attackCycle: 1 }, $set: { lastAttacked: now } }, { upsert: true });
+            }
+        } catch {
+
+        } finally {
+            client.close();
+        }
+        return result;
+    },
+
     getMemberContributions: async function () {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         let users = [];
