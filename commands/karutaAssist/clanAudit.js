@@ -9,7 +9,7 @@ module.exports = async function clanAudit(msg) {
         const clanAuditMessage = new MessageEmbed();
         clanAuditMessage.setTitle('Clan Power Contributions');
         let message = `Showing the power contribution for each person during this attack cycle \n`;
-        message += `Current Attack Cycle Number : ${currentAttackCycleNumber}`;
+        message += `Current Attack Cycle Number : ${currentAttackCycleNumber} \n`;
         let totalPower = 0;
         let userPowerMessages = [];
         for (let member of clanMembers) {
