@@ -5,6 +5,7 @@ const timer = require('../commands/misc/timer');
 const sub = require('../commands/karutaAssist/sub');
 const prayer = require('../commands/karutaAssist/pray');
 const reactToKaruta = require('../commands/karutaAssist/reactToKaruta');
+const clanAudit = require('../commands/karutaAssist/clanAudit');
 
 
 var serverNotificationSubscribers = [];
@@ -54,6 +55,9 @@ module.exports = async (client, msg) => {
                 break;
             case '.pray':
                 prayer(msg);
+                break;
+            case '.audit':
+                clanAudit(msg);
                 break;
             case '.dsub':
                 serverNotificationSubscribers = sub(serverNotificationSubscribers, msg, splitMessage, isAdmin);
