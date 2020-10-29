@@ -3,6 +3,23 @@ const uri = process.env.MONGO_URL;
 
 module.exports = {
 
+    recordWork: async function (user) {
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        try {
+            await client.connect();
+            const collection = client.db("sambot").collection("clanRecord");
+            const attackRecord = await collection.findOne({ 'clanRecord': 'attack' });
+            const user = await collection.findOne({ 'id': user.id });
+            const now = Date.now();
+            if (user) {
+
+            } else {
+
+            }
+        } catch {
+
+        }
+    },
     pray: async function (user) {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         let prayers = null;
