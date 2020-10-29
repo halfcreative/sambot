@@ -26,6 +26,7 @@ function checkKarutaMessageType(msg) {
         }
     } else if (msg.embeds && msg.embeds[0]) {
         if (msg.embeds[0].title == "Work") {
+            console.log("msg", msg);
             karutaMessage = 2; // 2 = work
         }
         // karutaMessage = 2; // 2 = work
@@ -34,7 +35,6 @@ function checkKarutaMessageType(msg) {
 }
 
 function parseWorkMessage(msg) {
-    console.log(msg.embeds[0].description);
     const regex = /([0-9])\w+/g;
     const regex2 = /([0-9])\w+ power/g;
     let userId = msg.embeds[0].description.split(' ')[0].match(regex)[0];
