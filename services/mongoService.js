@@ -3,6 +3,23 @@ const uri = process.env.MONGO_URL;
 
 module.exports = {
 
+    currentAttackCycle: async function () {
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        let attackCycleNumber = 0;
+        try {
+            await client.connect();
+            const collection = client.db("sambot").collection("clanRecord");
+            const attackRecord = await collection.findOne({ 'clanRecordType': 'attack' });
+            attackCycleNumber = attackRecord.attackCycle;
+        } catch (error) {
+            console.log(error);
+        } finally {
+            client.close();
+        }
+
+        return attackCycleNumber;
+    },
+
 
     clanAttack: async function () {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
