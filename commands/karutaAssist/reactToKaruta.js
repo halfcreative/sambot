@@ -1,3 +1,5 @@
+const { recordWork } = require("../../services/mongoService");
+
 module.exports = async function reactToKaruta(msg) {
     let messageType = checkKarutaMessageType(msg);
     if (messageType == 1) {
@@ -40,4 +42,5 @@ function parseWorkMessage(msg) {
     let powerGained = parseInt(msg.embeds[0].description.match(regex2)[0].match(regex)[0]);
     console.log("user", userId);
     console.log("powerGained", powerGained);
+    recordWork(userId, powerGained);
 }
