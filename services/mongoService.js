@@ -9,7 +9,7 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
-            let tmpusers = await collection.find({ 'userId': { $exists: true } });
+            const tmpusers = await collection.find({ 'userId': { $exists: true } });
             users = tmpusers.toArray();
         } catch (error) {
             console.log(error);
