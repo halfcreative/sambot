@@ -3,29 +3,31 @@ const uri = process.env.MONGO_URL;
 
 module.exports = {
 
-    recordWork: async function (user, power) {
+    recordWork: async function (userId, power) {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        let result;
         try {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
             const attackRecord = await collection.findOne({ 'clanRecord': 'attack' });
-            const user = await collection.findOne({ 'id': user.id });
+            const user = await collection.findOne({ 'id': userId });
             const now = Date.now();
             if (user) {
                 if (user.lastWorked > now - 39600000) {
-
-
-                } else {
                     //last worked variable is less than 11 hours ago, must not have committed last work command.
 
+                } else {
+
                 }
-
             } else {
-
+                result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
             }
         } catch {
 
+        } finally {
+            client.close();
         }
+        return result;
     },
     pray: async function (user) {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
