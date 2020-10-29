@@ -10,7 +10,7 @@ module.exports = {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
             const attackRecord = await collection.findOne({ 'clanRecordType': 'attack' });
-            const user = await collection.findOne({ 'id': userId });
+            const user = await collection.findOne({ 'userId': userId });
             const now = Date.now();
             if (user) {
                 if (user.lastWorked > (now - 39600000)) {
