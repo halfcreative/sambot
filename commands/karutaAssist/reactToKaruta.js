@@ -29,6 +29,7 @@ function checkKarutaMessageType(msg) {
         if (msg.embeds[0].title == "Work") {
             karutaMessage = 2; // 2 = work
         }
+        karutaMessage = 2; // 2 = work
     }
     return karutaMessage;
 }
