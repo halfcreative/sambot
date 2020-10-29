@@ -3,7 +3,7 @@ const uri = process.env.MONGO_URL;
 
 module.exports = {
 
-    recordWork: async function (user) {
+    recordWork: async function (user, power) {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         try {
             await client.connect();
@@ -12,6 +12,13 @@ module.exports = {
             const user = await collection.findOne({ 'id': user.id });
             const now = Date.now();
             if (user) {
+                if (user.lastWorked > now - 39600000) {
+
+
+                } else {
+                    //last worked variable is less than 11 hours ago, must not have committed last work command.
+
+                }
 
             } else {
 
