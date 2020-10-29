@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 const { getMemberContributions } = require("../../services/mongoService");
 
 module.exports = async function clanAudit(msg) {
