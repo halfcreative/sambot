@@ -22,7 +22,6 @@ module.exports = async function reactToKaruta(msg) {
 function checkKarutaMessageType(msg) {
     let karutaMessage = 0;
     if (msg.content) {
-        console.log(msg.content.split(' ')[0]);
         if (msg.content.split(' ')[0] == "I\'m") {
             karutaMessage = 1; // 1 = server drop
         }

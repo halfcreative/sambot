@@ -13,7 +13,7 @@ module.exports = {
             const user = await collection.findOne({ 'id': userId });
             const now = Date.now();
             if (user) {
-                if (user.lastWorked > now - 39600000) {
+                if (user.lastWorked > (now - 39600000)) {
                     //last worked variable is less than 11 hours ago, must not have committed last work command.
                     console.log("working so soon?");
                 } else {
