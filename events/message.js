@@ -4,6 +4,7 @@ const id = require('../commands/karutaAssist/id');
 const timer = require('../commands/misc/timer');
 const sub = require('../commands/karutaAssist/sub');
 const prayer = require('../commands/karutaAssist/pray');
+const reactToKaruta = require('../commands/karutaAssist/reactToKaruta');
 
 
 var serverNotificationSubscribers = [];
@@ -63,32 +64,9 @@ module.exports = async (client, msg) => {
     } else {
         // Reactions to messages from bots
         // console.log(msg);
-        let serverDrop = checkForServerDrop(msg);
-        if (serverDrop) {
-            console.log(`Number of subs ${serverNotificationSubscribers.length}`);
-            if (serverNotificationSubscribers.length > 0) {
-                let string = '';
-                for (const user of serverNotificationSubscribers) {
-                    string += `${user}, `
-                }
-                string += ` Karuta is dropping a server drop`;
-                msg.channel.send(string);
-            }
-        } else {
-            // msg.channel.send('No one to notify');
-            console.log(msg);
-        }
+        reactToKaruta(msg);
+
     }
 }
 
-function checkForServerDrop(msg) {
-    let serverDrop = false;
-    if (msg.content) {
-        console.log(msg.content.split(' ')[0]);
-        if (msg.content.split(' ')[0] == "I\'m") {
-            serverDrop = true;
-        }
-    }
-    console.log(`Is this a server Drop?, ${serverDrop}`);
-    return serverDrop;
-}
+

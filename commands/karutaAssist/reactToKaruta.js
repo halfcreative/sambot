@@ -1,26 +1,40 @@
-module.exports = async function prayer(msg) {
-    let results = await pray(msg.author);
-    if (results.success) {
-        const prayerMessage = new MessageEmbed();
-        msg.channel.send('Praise Craig! Praise Brian!');
-        prayerMessage.setTitle('Prayer Successful');
-        let message = `You are now devotion level ${results.userPrayObj.prayers} \n`;
-        if (results.rankUpgrade) {
-            message += `*notices your rank* OwO wHat's THIS???? You got a new rank UwU ! \n`;
-            message += `Your rank is now ${results.userPrayObj.rank}\n`;
-            message += `uwu owo uwu`;
-        } else {
-            message += `Your rank is ${results.userPrayObj.rank}`;
+module.exports = async function reactToKaruta(msg) {
+    let messageType = checkKarutaMessageType(msg);
+    if (messageType == 1) {
+        console.log(`Number of subs ${serverNotificationSubscribers.length}`);
+        if (serverNotificationSubscribers.length > 0) {
+            let string = '';
+            for (const user of serverNotificationSubscribers) {
+                string += `${user}, `
+            }
+            string += ` Karuta is dropping a server drop`;
+            msg.channel.send(string);
         }
-        prayerMessage.setDescription(message);
-        msg.channel.send(prayerMessage);
+    } else if (messageType == 2) {
+        // msg.channel.send('No one to notify');
+        parseWorkMessage(msg);
+        console.log(msg);
     } else {
-        const prayerMessage = new MessageEmbed();
-        const now = Date.now();
-        prayerMessage.setTitle('Prayer Failed');
-        let message = `${msg.author}, you are praying too much. You must wait ${((results.userPrayObj.lastPrayed + 300000) - now) / 1000} seconds before praying again \n`;
-        message += `Your devotion level is ${results.userPrayObj.prayers} and your rank is ${results.userPrayObj.rank}`
-        prayerMessage.setDescription(message);
-        msg.channel.send(prayerMessage);
+
     }
+}
+function checkKarutaMessageType(msg) {
+    let karutaMessage = 0;
+    if (msg.content) {
+        console.log(msg.content.split(' ')[0]);
+        if (msg.content.split(' ')[0] == "I\'m") {
+            karutaMessage = 1; // 1 = server drop
+        }
+    } else if (msg.embeds && msg.embeds[0]) {
+        if (msg.embeds[0].title = "Work") {
+            karutaMessage = 2; // 2 = work
+        }
+    }
+    return karutaMessage;
+}
+
+function parseWorkMessage(msg) {
+    console.log(msg);
+    console.log(msg.embeds[0].description);
+    console.log(msg.mentions.users);
 }
