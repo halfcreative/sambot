@@ -4,7 +4,7 @@ const { getMemberContributions } = require("../../services/mongoService");
 module.exports = async function clanAudit(msg) {
     let clanMembers = await getMemberContributions(msg);
     if (clanMembers) {
-        clanMembers.sort((a, b) => { a.totalAddedPower > b.totalAddedPower })
+        clanMembers.sort((a, b) => { a.totalAddedPower > b.totalAddedPower });
         const clanAuditMessage = new MessageEmbed();
         clanAuditMessage.setTitle('Clan Power Contributions');
         let message = `Showing the power contribution for each person during this attack cycle \n`;
