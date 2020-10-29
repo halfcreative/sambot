@@ -36,6 +36,9 @@ function checkKarutaMessageType(msg) {
 function parseWorkMessage(msg) {
     console.log(msg.embeds[0].description);
     const regex = /([0-9])\w+/g;
+    const regex2 = /([0-9])\w+ power/g;
     let userId = msg.embeds[0].description.split(' ')[0].match(regex)[0];
+    let powerGained = msg.embeds[0].description.match(regex2)[0];
     console.log("user", userId);
+    console.log("powerGained", powerGained);
 }
