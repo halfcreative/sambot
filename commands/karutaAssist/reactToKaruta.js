@@ -1,4 +1,4 @@
-const { recordWork } = require("../../services/mongoService");
+const { recordWork, clanAttack } = require("../../services/mongoService");
 
 module.exports = async function reactToKaruta(msg) {
     let messageType = checkKarutaMessageType(msg);
@@ -14,9 +14,8 @@ module.exports = async function reactToKaruta(msg) {
         // }
     } else if (messageType == 2) {
         parseWorkMessage(msg);
-
-    } else {
-
+    } else if (messageType == 3) {
+        clanAttack();
     }
 }
 function checkKarutaMessageType(msg) {
@@ -28,8 +27,9 @@ function checkKarutaMessageType(msg) {
     } else if (msg.embeds && msg.embeds[0]) {
         if (msg.embeds[0].title == "Work") {
             karutaMessage = 2; // 2 = work
+        } else if (msg.embeds[0].title == "Attack Node") {
+            karutaMessage = 3; // 3 = attack 
         }
-        // karutaMessage = 2; // 2 = work
     }
     return karutaMessage;
 }
