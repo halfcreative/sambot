@@ -17,6 +17,7 @@ module.exports = {
                 // Working on a new attack cycle
                 result = await collection.updateOne({ 'clanRecordType': 'attack' }, { $set: { lastAttacked: now } }, { upsert: true });
             } else {
+                console.log("normal attack")
                 result = await collection.updateOne({ 'clanRecordType': 'attack' }, { $inc: { attackCycle: 1 }, $set: { lastAttacked: now } }, { upsert: true });
             }
         } catch {
