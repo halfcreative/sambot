@@ -35,6 +35,6 @@ function checkKarutaMessageType(msg) {
 
 function parseWorkMessage(msg) {
     console.log(msg.embeds[0].description);
-    let user = msg.embeds[0].description.split(' ')[0];
+    let user = msg.embeds[0].description.split(' ')[0].split(',')[0];
     console.log("user", user);
 }
