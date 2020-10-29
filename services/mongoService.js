@@ -16,9 +16,10 @@ module.exports = {
                 if (user.lastWorked > (now - 39600000)) {
                     //last worked variable is less than 11 hours ago, must not have committed last work command.
                     console.log("working so soon?");
+                    result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: (power - user.lastAddedPower) }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
                 } else {
                     console.log("normal work");
-
+                    result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
                 }
             } else {
                 result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
