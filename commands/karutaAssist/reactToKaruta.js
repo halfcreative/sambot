@@ -26,7 +26,7 @@ function checkKarutaMessageType(msg) {
             karutaMessage = 1; // 1 = server drop
         }
     } else if (msg.embeds && msg.embeds[0]) {
-        if (msg.embeds[0].title = "Work") {
+        if (msg.embeds[0].title == "Work") {
             karutaMessage = 2; // 2 = work
         }
     }
