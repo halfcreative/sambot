@@ -19,10 +19,10 @@ module.exports = {
                     result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: (power - user.lastAddedPower) }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
                 } else {
                     console.log("normal work");
-                    result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
+                    result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power, workCount: 1 }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
                 }
             } else {
-                result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
+                result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power, workCount: 1 } }, { upsert: true });
             }
         } catch {
 
