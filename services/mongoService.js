@@ -9,14 +9,15 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
-            const attackRecord = await collection.findOne({ 'clanRecord': 'attack' });
+            const attackRecord = await collection.findOne({ 'clanRecordType': 'attack' });
             const user = await collection.findOne({ 'id': userId });
             const now = Date.now();
             if (user) {
                 if (user.lastWorked > now - 39600000) {
                     //last worked variable is less than 11 hours ago, must not have committed last work command.
-
+                    console.log("working so soon?");
                 } else {
+                    console.log("normal work");
 
                 }
             } else {
