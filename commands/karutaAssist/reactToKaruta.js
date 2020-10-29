@@ -11,9 +11,8 @@ module.exports = async function reactToKaruta(msg) {
         //     msg.channel.send(string);
         // }
     } else if (messageType == 2) {
-        // msg.channel.send('No one to notify');
         parseWorkMessage(msg);
-        console.log(msg);
+
     } else {
 
     }
@@ -35,7 +34,7 @@ function checkKarutaMessageType(msg) {
 }
 
 function parseWorkMessage(msg) {
-    console.log(msg);
     console.log(msg.embeds[0].description);
-    console.log(msg.mentions.users);
+    let user = msg.embeds[0].description.split(' ')[0];
+    console.log("user", user);
 }
