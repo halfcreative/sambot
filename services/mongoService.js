@@ -9,13 +9,13 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
-            users = (await collection.find({ 'userId': { $exists: true } })).toArray();
+            users = await collection.find({ 'userId': { $exists: true } });
         } catch (error) {
             console.log(error);
         } finally {
             client.close();
         }
-        return users;
+        return users.toArray();
     },
 
     recordWork: async function (userId, power) {
