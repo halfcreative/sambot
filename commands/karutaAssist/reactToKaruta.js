@@ -1,15 +1,15 @@
 module.exports = async function reactToKaruta(msg) {
     let messageType = checkKarutaMessageType(msg);
     if (messageType == 1) {
-        console.log(`Number of subs ${serverNotificationSubscribers.length}`);
-        if (serverNotificationSubscribers.length > 0) {
-            let string = '';
-            for (const user of serverNotificationSubscribers) {
-                string += `${user}, `
-            }
-            string += ` Karuta is dropping a server drop`;
-            msg.channel.send(string);
-        }
+        // console.log(`Number of subs ${serverNotificationSubscribers.length}`);
+        // if (serverNotificationSubscribers.length > 0) {
+        //     let string = '';
+        //     for (const user of serverNotificationSubscribers) {
+        //         string += `${user}, `
+        //     }
+        //     string += ` Karuta is dropping a server drop`;
+        //     msg.channel.send(string);
+        // }
     } else if (messageType == 2) {
         // msg.channel.send('No one to notify');
         parseWorkMessage(msg);
