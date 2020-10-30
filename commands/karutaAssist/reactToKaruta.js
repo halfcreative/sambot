@@ -28,7 +28,13 @@ function checkKarutaMessageType(msg) {
         if (msg.embeds[0].title == "Work") {
             karutaMessage = 2; // 2 = work
         } else if (msg.embeds[0].title == "Attack Node") {
-            karutaMessage = 3; // 3 = attack 
+            const regex = /defense/g
+            let match = msg.embeds[0].description.match(regex);
+            if (match) {
+                karutaMessage = 4; // 4 = defend
+            } else {
+                karutaMessage = 3; // 3 = attack 
+            }
         }
     }
     return karutaMessage;
@@ -42,4 +48,8 @@ function parseWorkMessage(msg) {
     console.log("user", userId);
     console.log("powerGained", powerGained);
     recordWork(userId, powerGained);
+}
+
+function reactToAttack(msg) {
+
 }
