@@ -78,24 +78,24 @@ module.exports = {
                     if (user.lastWorked > (now - 39600000)) {
                         //last worked variable is less than 11 hours ago, must not have committed last work command.
                         console.log("working so soon?");
-                        result = await collection.updateOne({ 'userId': userId }, { $set: { totalAddedPower: power, lastWorked: now, lastAddedPower: power, attackCycle: attackRecord.attackCycle } }, { upsert: true });
+                        result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: (power - user.lastAddedPower) }, $set: { totalAddedPower: power, lastWorked: now, lastAddedPower: power, attackCycle: attackRecord.attackCycle, workCount: 1 } }, { upsert: true });
                     } else {
                         console.log("normal work ");
-                        result = await collection.updateOne({ 'userId': userId }, { $set: { totalAddedPower: power, lastWorked: now, lastAddedPower: power, attackCycle: attackRecord.attackCycle } }, { upsert: true });
+                        result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: power, workCountAllCycles: 1 }, $set: { totalAddedPower: power, lastWorked: now, lastAddedPower: power, attackCycle: attackRecord.attackCycle, workCount: 1 } }, { upsert: true });
                     }
                 } else {
                     console.log("current attack cycle");
                     if (user.lastWorked > (now - 39600000)) {
                         //last worked variable is less than 11 hours ago, must not have committed last work command.
                         console.log("working so soon?");
-                        result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: (power - user.lastAddedPower) }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
+                        result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: (power - user.lastAddedPower), totalAddedPower: (power - user.lastAddedPower) }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
                     } else {
                         console.log("normal work");
-                        result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power, workCount: 1 }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
+                        result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: power, totalAddedPower: power, workCount: 1, workCountAllCycles: 1 }, $set: { lastWorked: now, lastAddedPower: power } }, { upsert: true });
                     }
                 }
             } else {
-                result = await collection.updateOne({ 'userId': userId }, { $inc: { totalAddedPower: power }, $set: { lastWorked: now, lastAddedPower: power, workCount: 1 } }, { upsert: true });
+                result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: power, totalAddedPower: power, workCount: 1, workCountAllCycles: 1 }, $set: { lastWorked: now, lastAddedPower: power, workCount: 1 } }, { upsert: true });
             }
         } catch {
 
