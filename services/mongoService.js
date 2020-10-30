@@ -144,7 +144,7 @@ module.exports = {
 function rankings(count) {
     if (count > 20000) {
         return 'God';
-    } else if (count > 7500) {
+    } else if (count > 10000) {
         return 'Pope';
     } else if (count > 5000) {
         return 'Cardinal';
