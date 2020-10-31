@@ -95,7 +95,7 @@ module.exports = {
                     }
                 }
             } else {
-                result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: power, totalAddedPower: power, workCount: 1, workCountAllCycles: 1 }, $set: { lastWorked: now, lastAddedPower: power, workCount: 1 } }, { upsert: true });
+                result = await collection.updateOne({ 'userId': userId }, { $inc: { runningTotalAllCycles: power, totalAddedPower: power, workCount: 1, workCountAllCycles: 1 }, $set: { lastWorked: now, lastAddedPower: power, workCount: 1, attackCycle: attackRecord.attackCycle } }, { upsert: true });
             }
         } catch {
 
