@@ -13,7 +13,7 @@ module.exports = async function church(msg) {
         for (let member of results) {
             usersListMessages.push(`${member.rank} <@${member.user}> : LVL ${member.prayers} \n`);
         }
-        message += userListMessages.join('');
+        message += usersListMessages.join('');
         prayerMessage.setDescription(message);
         msg.channel.send(prayerMessage);
     } else {
