@@ -6,6 +6,8 @@ const sub = require('../commands/karutaAssist/sub');
 const prayer = require('../commands/karutaAssist/pray');
 const reactToKaruta = require('../commands/karutaAssist/reactToKaruta');
 const clanAudit = require('../commands/karutaAssist/clanAudit');
+const { viewChurch } = require('../services/mongoService');
+const church = require('../commands/karutaAssist/church');
 
 
 var serverNotificationSubscribers = [];
@@ -56,6 +58,9 @@ module.exports = async (client, msg) => {
             case '.pray':
                 prayer(msg);
                 break;
+            case '.church':
+                church(msg);
+                break
             case '.audit':
                 clanAudit(msg);
                 break;

@@ -139,11 +139,28 @@ module.exports = {
         return returnObj;
     },
 
+    viewChurch: async function () {
+        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        let users = [];
+        try {
+            await client.connect();
+            const collection = client.db("sambot").collection("prayers");
+            const tmpUsers = await collection.find({}).sort({ prayers: -1 }).toArray();
+            users = tmpUsers;
+        } catch (error) {
+            console.log(error);
+        } finally {
+            client.close();
+        }
+
+        return users;
+    }
+
 }
 
 function rankings(count) {
     if (count > 20000) {
-        return 'God';
+        return 'Low Angel';
     } else if (count > 10000) {
         return 'Pope';
     } else if (count > 5000) {
