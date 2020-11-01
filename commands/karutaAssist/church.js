@@ -8,10 +8,10 @@ module.exports = async function church(msg) {
         prayerMessage.setTitle(' :church: Church of Degen :church: ');
         let message = `Welcome to the church of degen. \n`;
         message += `:angel: Embrace the degen, and the degen will embrace you :angel:\n`;
-        message += `The church of degen is currently ${results.length} members strong`;
+        message += `Our faith is currently ${results.length} members strong\n`;
         let usersListMessages = [];
         for (let member of results) {
-            usersListMessages.push(`${member.rank} <@${member.user}> : LVL ${member.prayers} \n`);
+            usersListMessages.push(`**${member.rank}** <@${member.user}> : LVL ${member.prayers} \n`);
         }
         message += usersListMessages.join('');
         prayerMessage.setDescription(message);
