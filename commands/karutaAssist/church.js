@@ -11,9 +11,7 @@ module.exports = async function church(msg) {
         message += `The church of degen is currently ${results.length} members strong`;
         let usersListMessages = [];
         for (let member of results) {
-            if (member.attackCycle == currentAttackCycleNumber) {
-                usersListMessages.push(`${member.rank} <@${member.user}> : LVL ${member.prayers} \n`);
-            }
+            usersListMessages.push(`${member.rank} <@${member.user}> : LVL ${member.prayers} \n`);
         }
         message += userListMessages.join('');
         prayerMessage.setDescription(message);
