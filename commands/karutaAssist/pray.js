@@ -6,7 +6,7 @@ module.exports = async function prayer(msg) {
     if (results.success) {
         const prayerMessage = new MessageEmbed();
         msg.channel.send('Praise Craig! Praise Brian!');
-        prayerMessage.setTitle('Prayer Successful');
+        prayerMessage.setTitle(':pray: Prayer Successful :pray:');
         let message = `You are now devotion level ${results.userPrayObj.prayers} \n`;
         if (results.rankUpgrade) {
             message += `*notices your rank* OwO wHat's THIS???? You got a new rank UwU ! \n`;
