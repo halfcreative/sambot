@@ -51,8 +51,7 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("clanRecord");
-            const tmpUsers = await collection.find({ 'userId': { $exists: true } }).sort({ totalAddedPower: -1 }).toArray();
-            users = tmpUsers;
+            users = await collection.find({ 'userId': { $exists: true } }).sort({ totalAddedPower: -1 }).toArray();
         } catch (error) {
             console.log(error);
         } finally {
