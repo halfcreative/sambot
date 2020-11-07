@@ -17,7 +17,7 @@ module.exports = async function clanAudit(msg) {
                 userPowerMessages.push(`<@${member.userId}> : ${member.totalAddedPower} (${member.workCount}) \n`);
             }
         }
-        message += `Total Clan Power Collected This Period : ${totalPower} \n`;
+        message += `Total Clan Power Collected This Period : **${totalPower}** \n`;
         message += userPowerMessages.join('');
         clanAuditMessage.setDescription(message);
         msg.channel.send(clanAuditMessage);
