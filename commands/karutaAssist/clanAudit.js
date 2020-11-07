@@ -14,7 +14,7 @@ module.exports = async function clanAudit(msg) {
         for (let member of clanMembers) {
             if (member.attackCycle == currentAttackCycleNumber) {
                 totalPower += member.totalAddedPower
-                userPowerMessages.push(`<@${member.userId}> : ${member.totalAddedPower} \n`);
+                userPowerMessages.push(`<@${member.userId}> : ${member.totalAddedPower} (${member.workCount}) \n`);
             }
         }
         message += `Total Clan Power Collected This Period : ${totalPower} \n`;
