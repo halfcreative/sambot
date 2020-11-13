@@ -6,8 +6,8 @@ module.exports = function dtimer(msg, splitMessage, isAdmin) {
         if (splitMessage[1] == parseInt(splitMessage[1])) {
             // User input a number as a parameter
             let minutes = parseInt(splitMessage[1])
-            if (minutes > 120) {
-                msg.channel.send(`Your input of ${splitMessage[1]} minutes exceeds the maximum time permitted (120 minutes).`);
+            if (minutes > 240) {
+                msg.channel.send(`Your input of ${splitMessage[1]} minutes exceeds the maximum time permitted (240 minutes).`);
             } else {
                 if (userTimers[0]) {
                     msg.channel.send(`You already have a timer set. Overwriting existing timer.`);
