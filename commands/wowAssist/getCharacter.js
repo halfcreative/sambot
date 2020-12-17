@@ -22,7 +22,7 @@ module.exports = async function getWowCharacter(msg) {
             messageEmbed.addField(`Healer Specs:`, `${season.scores.healer}`, true);
         }
     }
-    messageEmbed.addField(`Mythic+ Season ${season.season.split('-')[2]} Highest Runs: `, '\u200B', false);
+    messageEmbed.addField(`Highest Runs In Current Season: `, '\u200B', false);
     let dungeonNames = '';
     let levels = '';
     let scores = '';
