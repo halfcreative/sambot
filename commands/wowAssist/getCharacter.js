@@ -35,7 +35,7 @@ module.exports = async function getWowCharacter(msg) {
         messageEmbed.addField(`DPS (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_dps.region, true);
     }
     messageEmbed.addField('Current Realm Ranks', '\u200B')
-    messageEmbed.addField('Overall', characterJSON.mythic_plus_ranks.overall.region, true);
+    messageEmbed.addField('Overall', characterJSON.mythic_plus_ranks.overall.realm, true);
     if (characterJSON.active_spec_role === 'HEALING') {
         messageEmbed.addField('Healers (All)', characterJSON.mythic_plus_ranks.healer.realm, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_healer.realm, true);
