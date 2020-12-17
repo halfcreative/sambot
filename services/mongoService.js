@@ -171,7 +171,7 @@ module.exports = {
         try {
             await client.connect();
             const collection = client.db("sambot").collection("wowChar");
-            const tmpUsers = await collection.find({ user: user.id }).toArray();
+            const tmpUsers = (await collection.find({ user: user.id })).toArray();
             users = tmpUsers;
         } catch (error) {
             console.log(error);
