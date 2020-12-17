@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 
 module.exports = function getCharacter() {
-    fetch(`https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=pipopapo`).then(response => response.json()).then(json => console.log(json));
+    return fetch(`https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=pipopapo&fields=mythic_plus_scores_by_season%3Acurrent%2Cmythic_plus_ranks%2Cmythic_plus_highest_level_runs%2Cmythic_plus_recent_runs
+    `).then(response => response.json());
 }
