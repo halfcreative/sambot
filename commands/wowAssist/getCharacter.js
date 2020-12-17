@@ -95,7 +95,7 @@ module.exports = async function getWowCharacter(msg, splitMessage) {
         messageEmbed.setFooter(`${characterJSON.profile_url}`)
         msg.channel.send(messageEmbed);
     } else {
-        msg.channel.send("You do not have a character set, please run .setChar server character");
+        msg.channel.send(" User does not have a character set, please run ```.setChar server character```");
     }
 
 
