@@ -10,6 +10,7 @@ const { viewChurch } = require('../services/mongoService');
 const church = require('../commands/karutaAssist/church');
 const noBotCommandsInGeneral = require('../commands/karutaAssist/noBotCommandsInGeneral');
 const getWowCharacter = require('../commands/wowAssist/getCharacter');
+const setWowCharacter = require('../commands/wowAssist/setCharacter');
 
 
 var serverNotificationSubscribers = [];
@@ -47,6 +48,9 @@ module.exports = async (client, msg) => {
         switch (splitMessage[0]) {
             case '.char':
                 getWowCharacter(msg);
+                break;
+            case '.setChar':
+                setWowCharacter(msg, splitMessage);
                 break;
             case '.roll':
                 roll(msg, splitMessage);

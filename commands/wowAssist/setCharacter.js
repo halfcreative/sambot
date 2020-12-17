@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { setCharacter } = require('../../services/mongoService');
 
-module.exports = async function getWowCharacter(msg, splitMessage) {
+module.exports = async function setWowCharacter(msg, splitMessage) {
     if (splitMessage[1] && splitMessage[2]) {
         setCharacter(msg.author, splitMessage[1], splitMessage[2]);
         msg.channel.send(`setting server to ${splitMessage[1]}, and character to ${splitMessage[2]}`)
