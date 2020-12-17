@@ -3,7 +3,7 @@ const getCharacter = require('../../services/raiderIOService');
 const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getWowCharacter(msg, splitMessage) {
-    let userChar;
+    let userId;
     if (splitMessage[1]) {
         if (msg.mentions) {
             console.log(msg.mentions);
@@ -13,14 +13,15 @@ module.exports = async function getWowCharacter(msg, splitMessage) {
                 if (msg.mentions.users.length > 1) {
                     msg.channel.send(`Sam has forbidden me from checking the ID of more than 1 person at a time.`);
                 } else {
-                    console.log(msg.mentions.users[0]);
-                    userChar = await getUserCharacter(msg.mentions.users[0][1].id);
+                    console.log(msg.mentions.users);
+                    msg.mentions.users.map(mention => { userId = mention.id });
                 }
             }
         }
     } else {
-        userChar = await getUserCharacter(msg.author);
+        userId = msg.author.id;
     }
+    const userChar = await getUserCharacter(userId);
     if (userChar) {
         const characterJSON = await getCharacter(userChar.realm, userChar.character);
         const messageEmbed = new MessageEmbed();

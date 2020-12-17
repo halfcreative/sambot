@@ -164,14 +164,14 @@ module.exports = {
         client.close();
     },
 
-    getUserCharacter: async function (user) {
-        console.log('user', user.id);
+    getUserCharacter: async function (userId) {
+        console.log('user', userId);
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         let userChar;
         try {
             await client.connect();
             const collection = client.db("sambot").collection("wowChar");
-            const result = await collection.findOne({ 'user': user.id });
+            const result = await collection.findOne({ 'user': userId });
             userChar = result;
         } catch (error) {
             console.log(error);
