@@ -1,8 +1,11 @@
 const { MessageEmbed } = require('discord.js');
 const getCharacter = require('../../services/raiderIOService');
+const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getWowCharacter(msg) {
-    const characterJSON = await getCharacter();
+    const userChar = getUserCharacter();
+    console.log(userChar);
+    const characterJSON = await getCharacter('Stormrage', 'Pipopapo');
     console.log(characterJSON);
     const messageEmbed = new MessageEmbed();
     messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
