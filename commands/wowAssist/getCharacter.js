@@ -7,5 +7,6 @@ module.exports = async function getWowCharacter(msg) {
     const messageEmbed = new MessageEmbed();
     messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
     messageEmbed.setDescription(`${characterJSON}`);
+    msg.channel.send(messageEmbed);
 
 }
