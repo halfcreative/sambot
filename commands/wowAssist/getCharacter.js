@@ -4,8 +4,7 @@ const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getWowCharacter(msg) {
     const userChar = await getUserCharacter(msg.author);
-    console.log(userChar);
-    const characterJSON = await getCharacter('Stormrage', 'Pipopapo');
+    const characterJSON = await getCharacter(userChar.realm, userChar.character);
     const messageEmbed = new MessageEmbed();
     messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
     messageEmbed.setThumbnail('https://render-us.worldofwarcraft.com/character/stormrage/180/234904756-avatar.jpg?alt=wow/static/images/2d/avatar/37-0.jpg');
