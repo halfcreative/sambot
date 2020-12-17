@@ -5,6 +5,7 @@ const { getUserCharacter } = require("../../services/mongoService");
 module.exports = async function getWowCharacter(msg, splitMessage) {
     let userChar;
     if (msg.mentions) {
+        console.log(msg.mentions);
         if (msg.mentions.everyone) {
             msg.channel.send(`Sam has forbidden me from checking the IO of everyone.`);
         } else {
