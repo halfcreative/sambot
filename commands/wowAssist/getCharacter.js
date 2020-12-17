@@ -3,7 +3,7 @@ const getCharacter = require('../../services/raiderIOService');
 const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getWowCharacter(msg) {
-    const userChar = getUserCharacter();
+    const userChar = getUserCharacter(msg);
     console.log(userChar);
     const characterJSON = await getCharacter('Stormrage', 'Pipopapo');
     console.log(characterJSON);
