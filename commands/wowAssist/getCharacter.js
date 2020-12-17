@@ -26,7 +26,9 @@ module.exports = async function getWowCharacter(msg) {
     let dungeonNames = '';
     let levels = '';
     let scores = '';
+    console.log(characterJSON.mythic_plus_highest_level_runs);
     for (const dungeon in characterJSON.mythic_plus_highest_level_runs) {
+        console.log(dungeon);
         dungeonNames += `${dungeon.dungeon}\n`;
         levels += `${dungeon.mythic_level}\n`;
         scores += `${dungeon.score}\n`;
