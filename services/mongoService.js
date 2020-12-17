@@ -161,7 +161,7 @@ module.exports = {
         await client.connect();
         const collection = client.db("sambot").collection("wowChar");
         const userCharResult = await collection.findOne({ 'user': user.id });
-        const results = await collection.updateOne({ 'user': user.id }, { $set: { realm: realmName, character: characterName } });
+        const results = await collection.updateOne({ 'user': user.id }, { $set: { realm: realmName, character: characterName } }, { upsert: true });
         client.close();
     },
 
