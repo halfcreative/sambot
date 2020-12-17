@@ -13,38 +13,42 @@ module.exports = async function getWowCharacter(msg) {
     messageEmbed.addField('Current World Ranks', '\u200B')
     messageEmbed.addField('Overall', characterJSON.mythic_plus_ranks.overall.world, true);
     if (characterJSON.active_spec_role === 'HEALING') {
-        messageEmbed.addField('Healers (All Classes)', characterJSON.mythic_plus_ranks.healer.world, true);
+        messageEmbed.addField('Healers (All)', characterJSON.mythic_plus_ranks.healer.world, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_healer.world, true);
-    } else if (characterJSOn.active_spec_role === 'TANK') {
-        messageEmbed.addField('Tanks (All Classes)', characterJSON.mythic_plus_ranks.tank.world, true);
+    } else if (characterJSON.active_spec_role === 'TANK') {
+        messageEmbed.addField('Tanks (All)', characterJSON.mythic_plus_ranks.tank.world, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_tank.world, true);
-    } else if (characterJSOn.active_spec_role === 'DPS') {
-        messageEmbed.addField('DPS (All Classes)', characterJSON.mythic_plus_ranks.dps.world, true);
+    } else if (characterJSON.active_spec_role === 'DPS') {
+        messageEmbed.addField('DPS (All)', characterJSON.mythic_plus_ranks.dps.world, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_dps.world, true);
     }
     messageEmbed.addField('Current Region Ranks', '\u200B')
     messageEmbed.addField('Overall', characterJSON.mythic_plus_ranks.overall.region, true);
     if (characterJSON.active_spec_role === 'HEALING') {
-        messageEmbed.addField('Healers (All Classes)', characterJSON.mythic_plus_ranks.healer.region, true);
+        messageEmbed.addField('Healers (All)', characterJSON.mythic_plus_ranks.healer.region, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_healer.region, true);
-    } else if (characterJSOn.active_spec_role === 'TANK') {
-        messageEmbed.addField('Tanks (All Classes)', characterJSON.mythic_plus_ranks.tank.region, true);
+    } else if (characterJSON.active_spec_role === 'TANK') {
+        messageEmbed.addField('Tanks (All)', characterJSON.mythic_plus_ranks.tank.region, true);
         messageEmbed.addField(`Tanks (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_tank.region, true);
-    } else if (characterJSOn.active_spec_role === 'DPS') {
-        messageEmbed.addField('DPS (All Classes)', characterJSON.mythic_plus_ranks.dps.region, true);
+    } else if (characterJSON.active_spec_role === 'DPS') {
+        messageEmbed.addField('DPS (All)', characterJSON.mythic_plus_ranks.dps.region, true);
         messageEmbed.addField(`DPS (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_dps.region, true);
     }
     messageEmbed.addField('Current Realm Ranks', '\u200B')
     messageEmbed.addField('Overall', characterJSON.mythic_plus_ranks.overall.region, true);
     if (characterJSON.active_spec_role === 'HEALING') {
-        messageEmbed.addField('Healers (All Classes)', characterJSON.mythic_plus_ranks.healer.realm, true);
+        messageEmbed.addField('Healers (All)', characterJSON.mythic_plus_ranks.healer.realm, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_healer.realm, true);
-    } else if (characterJSOn.active_spec_role === 'TANK') {
-        messageEmbed.addField('Tanks (All Classes)', characterJSON.mythic_plus_ranks.tank.realm, true);
+    } else if (characterJSON.active_spec_role === 'TANK') {
+        messageEmbed.addField('Tanks (All)', characterJSON.mythic_plus_ranks.tank.realm, true);
         messageEmbed.addField(`Tanks (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_tank.realm, true);
-    } else if (characterJSOn.active_spec_role === 'DPS') {
-        messageEmbed.addField('DPS (All Classes)', characterJSON.mythic_plus_ranks.dps.realm, true);
+    } else if (characterJSON.active_spec_role === 'DPS') {
+        messageEmbed.addField('DPS (All)', characterJSON.mythic_plus_ranks.dps.realm, true);
         messageEmbed.addField(`DPS (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_dps.realm, true);
+    }
+    messageEmbed.addField('Current Realm Ranks', '\u200B');
+    for (const filter of characterJSON.mythic_plus_ranks) {
+        console.log(filter);
     }
     for (const season of characterJSON.mythic_plus_scores_by_season) {
         messageEmbed.addField(`Mythic+ Season ${season.season.split('-')[2]} Scores :`, '\u200B', false);
