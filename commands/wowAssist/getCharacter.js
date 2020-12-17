@@ -2,8 +2,22 @@ const { MessageEmbed } = require('discord.js');
 const getCharacter = require('../../services/raiderIOService');
 const { getUserCharacter } = require("../../services/mongoService");
 
-module.exports = async function getWowCharacter(msg) {
-    const userChar = await getUserCharacter(msg.author);
+module.exports = async function getWowCharacter(msg, splitMessage) {
+    let userChar;
+    if (msg.mentions) {
+        if (msg.mentions.everyone) {
+            msg.channel.send(`Sam has forbidden me from checking the IO of everyone.`);
+        } else {
+            if (msg.mentions.users.length > 1) {
+                msg.channel.send(`Sam has forbidden me from checking the ID of more than 1 person at a time.`);
+            } else {
+                console.log(msg.mentions.users[0]);
+                userChar = await getUserCharacter(msg.mentions.users[0][1].id);
+            }
+        }
+    } else {
+        userChar = await getUserCharacter(msg.author);
+    }
     const characterJSON = await getCharacter(userChar.realm, userChar.character);
     const messageEmbed = new MessageEmbed();
     messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
