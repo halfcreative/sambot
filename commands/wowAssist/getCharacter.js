@@ -4,16 +4,18 @@ const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getWowCharacter(msg, splitMessage) {
     let userChar;
-    if (msg.mentions) {
-        console.log(msg.mentions);
-        if (msg.mentions.everyone) {
-            msg.channel.send(`Sam has forbidden me from checking the IO of everyone.`);
-        } else {
-            if (msg.mentions.users.length > 1) {
-                msg.channel.send(`Sam has forbidden me from checking the ID of more than 1 person at a time.`);
+    if (splitMessage[1]) {
+        if (msg.mentions) {
+            console.log(msg.mentions);
+            if (msg.mentions.everyone) {
+                msg.channel.send(`Sam has forbidden me from checking the IO of everyone.`);
             } else {
-                console.log(msg.mentions.users[0]);
-                // userChar = await getUserCharacter(msg.mentions.users[0][1].id);
+                if (msg.mentions.users.length > 1) {
+                    msg.channel.send(`Sam has forbidden me from checking the ID of more than 1 person at a time.`);
+                } else {
+                    console.log(msg.mentions.users[0]);
+                    userChar = await getUserCharacter(msg.mentions.users[0][1].id);
+                }
             }
         }
     } else {
