@@ -12,7 +12,7 @@ module.exports = async function getWowCharacter(msg, splitMessage) {
                 msg.channel.send(`Sam has forbidden me from checking the ID of more than 1 person at a time.`);
             } else {
                 console.log(msg.mentions.users[0]);
-                userChar = await getUserCharacter(msg.mentions.users[0][1].id);
+                // userChar = await getUserCharacter(msg.mentions.users[0][1].id);
             }
         }
     } else {
