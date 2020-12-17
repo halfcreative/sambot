@@ -160,26 +160,16 @@ module.exports = {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         await client.connect();
         const collection = client.db("sambot").collection("wowChar");
-        const userCharResult = await collection.findOne({ 'user': user.id });
         const results = await collection.updateOne({ 'user': user.id }, { $set: { realm: realmName, character: characterName } }, { upsert: true });
         client.close();
     },
 
     getUserCharacter: async function (user) {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        let users = [];
-        try {
-            await client.connect();
-            const collection = client.db("sambot").collection("wowChar");
-            const tmpUsers = (await collection.find({ user: user.id })).toArray();
-            users = tmpUsers;
-        } catch (error) {
-            console.log(error);
-        } finally {
-            client.close();
-        }
-
-        return users[0];
+        await client.connect();
+        const collection = client.db("sambot").collection("wowChar");
+        const userCharResult = await collection.findOne({ 'user': user.id });
+        return userCharResult;
     }
 
 }
