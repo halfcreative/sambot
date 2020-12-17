@@ -24,6 +24,7 @@ module.exports = async function getWowCharacter(msg) {
     }
     characterMessage += ``;
     messageEmbed.setDescription(characterMessage);
+    messageEmbed.setFooter(`(Raider IO Profile)[${characterJSON.profile_url}]`)
     msg.channel.send(messageEmbed);
 
 }
