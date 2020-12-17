@@ -1,5 +1,5 @@
 const { getCharacter } = require("../../services/raiderIOService")
 
-module.exports = function getChar(msg) {
+module.exports = function getWowCharacter(msg) {
     getCharacter();
 }
