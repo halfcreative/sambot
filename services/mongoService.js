@@ -168,8 +168,7 @@ module.exports = {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         await client.connect();
         const collection = client.db("sambot").collection("wowChar");
-        const userCharResult = await collection.findOne({ 'user': user.id });
-        return userCharResult;
+        return await collection.findOne({ 'user': user.id });
     }
 
 }
