@@ -73,7 +73,7 @@ module.exports = async function getWowCharacter(msg) {
         { name: 'Levels', value: levels, inline: true },
         { name: 'Scores', value: scores, inline: true }
     )
-    messageEmbed.setFooter(`(Raider IO Profile)[${characterJSON.profile_url}]`)
+    messageEmbed.setFooter(`${characterJSON.profile_url}`)
     msg.channel.send(messageEmbed);
 
 }
