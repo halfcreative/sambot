@@ -165,6 +165,7 @@ module.exports = {
     },
 
     getUserCharacter: async function (user) {
+        console.log('user', user.id);
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
         let userChar;
         try {
