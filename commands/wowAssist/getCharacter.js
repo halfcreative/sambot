@@ -28,10 +28,10 @@ module.exports = async function getWowCharacter(msg) {
         messageEmbed.addField('Healers (All Classes)', characterJSON.mythic_plus_ranks.healer.region, true);
         messageEmbed.addField(`Healers (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_healer.region, true);
     } else if (characterJSOn.active_spec_role === 'TANK') {
-        messageEmbed.addField('Tanks (All Classes)', characterJSON.mythic_plus_ranks.tank.world, true);
+        messageEmbed.addField('Tanks (All Classes)', characterJSON.mythic_plus_ranks.tank.region, true);
         messageEmbed.addField(`Tanks (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_tank.region, true);
     } else if (characterJSOn.active_spec_role === 'DPS') {
-        messageEmbed.addField('DPS (All Classes)', characterJSON.mythic_plus_ranks.dps.world, true);
+        messageEmbed.addField('DPS (All Classes)', characterJSON.mythic_plus_ranks.dps.region, true);
         messageEmbed.addField(`DPS (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_dps.region, true);
     }
     messageEmbed.addField('Current Realm Ranks', '\u200B')
