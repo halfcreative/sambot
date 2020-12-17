@@ -22,6 +22,20 @@ module.exports = async function getWowCharacter(msg) {
             messageEmbed.addField(`Healer Specs:`, `${season.scores.healer}`, true);
         }
     }
+    messageEmbed.addField(`Mythic+ Season ${season.season.split('-')[2]} Highest Runs: `, '\u200B', false);
+    let dungeonNames = '';
+    let levels = '';
+    let scores = '';
+    for (const dungeon in characterJSON.mythic_plus_highest_level_runs) {
+        dungeonNames += `${dungeon.dungeon}\n`;
+        levels += `${dungeon.mythic_level}\n`;
+        scores += `${dungeon.score}\n`;
+    }
+    messageEmbed.addFields(
+        { name: 'Dungeon', value: dungeonNames, inline: true },
+        { name: 'Levels', value: levels, inline: true },
+        { name: 'Scores', value: scores, inline: true }
+    )
     characterMessage += ``;
     messageEmbed.setDescription(characterMessage);
     messageEmbed.setFooter(`(Raider IO Profile)[${characterJSON.profile_url}]`)
