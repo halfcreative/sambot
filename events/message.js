@@ -47,7 +47,7 @@ module.exports = async (client, msg) => {
         // General Commands
         switch (splitMessage[0]) {
             case '.char':
-                getWowCharacter(msg);
+                getWowCharacter(msg, splitMessage);
                 break;
             case '.setChar':
                 setWowCharacter(msg, splitMessage);
