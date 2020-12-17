@@ -46,10 +46,6 @@ module.exports = async function getWowCharacter(msg) {
         messageEmbed.addField('DPS (All)', characterJSON.mythic_plus_ranks.dps.realm, true);
         messageEmbed.addField(`DPS (${characterJSON.class})`, characterJSON.mythic_plus_ranks.class_dps.realm, true);
     }
-    messageEmbed.addField('Current Realm Ranks', '\u200B');
-    for (const filter of characterJSON.mythic_plus_ranks) {
-        console.log(filter);
-    }
     for (const season of characterJSON.mythic_plus_scores_by_season) {
         messageEmbed.addField(`Mythic+ Season ${season.season.split('-')[2]} Scores :`, '\u200B', false);
         messageEmbed.addField(`All Specs M+ Score:`, `${season.scores.all}`, true);
