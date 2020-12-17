@@ -158,9 +158,11 @@ module.exports = {
     setUserCharacter: async function (user, realmName, characterName) {
         console.log(user);
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+        await client.connect();
         const collection = client.db("sambot").collection("wowChar");
         const userCharResult = await collection.findOne({ 'user': user.id });
         const results = await collection.updateOne({ 'user': user.id }, { $set: { realm: realmName, character: characterName } });
+        client.close();
     },
 
     getUserCharacter: async function (user) {
