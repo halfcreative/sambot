@@ -28,6 +28,7 @@ module.exports = async function getWowCharacter(msg, splitMessage) {
         messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
         messageEmbed.setThumbnail(`${characterJSON.thumbnail_url}`);
         let characterMessage = `${characterJSON.name}, the ${characterJSON.active_spec_name} ${characterJSON.class} \n`;
+        characterMessage += `ilvl ${characterJSON.gear.item_level_equipped}`;
         messageEmbed.setDescription(characterMessage);
         messageEmbed.addField('Current World Ranks', '\u200B')
         messageEmbed.addField('Overall', characterJSON.mythic_plus_ranks.overall.world, true);
