@@ -1,7 +1,5 @@
-const fetchUrl = require("fetch").fetchUrl;
+const fetch = require('node-fetch');
 
 module.exports = function getCharacter() {
-    fetchUrl(`https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=pipopapo`).then(response => {
-        console.log(response);
-    })
+    fetch(`https://raider.io/api/v1/characters/profile?region=us&realm=stormrage&name=pipopapo`).then(response => response.json()).then(json => console.log(json));
 }
