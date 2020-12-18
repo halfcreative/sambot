@@ -34,24 +34,24 @@ module.exports = async function getWowCharacter(msg, splitMessage) {
         messageEmbed.addField('Renown', characterJSON.covenant.renown, true);
         messageEmbed.addField('iLvL', characterJSON.gear.item_level_equipped);
         messageEmbed.addFields(
-            { name: 'Head', value: `**${characterJSON.gear.head.name}** (${characterJSON.gear.head.item_level}) `, inline: true },
-            { name: 'Neck', value: `**${characterJSON.gear.neck.name}** (${characterJSON.gear.neck.item_level}) `, inline: true },
-            { name: 'Shoulders', value: `**${characterJSON.gear.shoulder.name}** (${characterJSON.gear.shoulder.item_level}) `, inline: true },
-            { name: 'Back', value: `**${characterJSON.gear.back.name}** (${characterJSON.gear.back.item_level}) `, inline: true },
-            { name: 'Chest', value: `**${characterJSON.gear.chest.name}** (${characterJSON.gear.chest.item_level}) `, inline: true },
-            { name: 'Waist', value: `**${characterJSON.gear.waist.name}** (${characterJSON.gear.waist.item_level}) `, inline: true },
-            { name: 'Wrists', value: `**${characterJSON.gear.wrist.name}** (${characterJSON.gear.wrist.item_level}) `, inline: true },
-            { name: 'Hands', value: `**${characterJSON.gear.hands.name}** (${characterJSON.gear.hands.item_level}) `, inline: true },
-            { name: 'Legs', value: `**${characterJSON.gear.legs.name}** (${characterJSON.gear.legs.item_level}) `, inline: true },
-            { name: 'Feet', value: `**${characterJSON.gear.feet.name}** (${characterJSON.gear.feet.item_level}) `, inline: true },
-            { name: 'Finger 1', value: `**${characterJSON.gear.finger1.name}** (${characterJSON.gear.finger1.item_level}) `, inline: true },
-            { name: 'Finger 2', value: `**${characterJSON.gear.finger2.name}** (${characterJSON.gear.finger2.item_level}) `, inline: true },
-            { name: 'Trinket 1', value: `**${characterJSON.gear.trinket1.name}** (${characterJSON.gear.trinket1.item_level}) `, inline: true },
-            { name: 'Trinket 2', value: `**${characterJSON.gear.trinket2.name}** (${characterJSON.gear.trinket2.item_level}) `, inline: true },
-            { name: 'Mainhand', value: `**${characterJSON.gear.mainhand.name}** (${characterJSON.gear.mainhand.item_level}) `, inline: true }
+            { name: 'Head', value: `**${characterJSON.gear.items.head.name}** (${characterJSON.gear.items.head.item_level}) `, inline: true },
+            { name: 'Neck', value: `**${characterJSON.gear.items.neck.name}** (${characterJSON.gear.items.neck.item_level}) `, inline: true },
+            { name: 'Shoulders', value: `**${characterJSON.gear.items.shoulder.name}** (${characterJSON.gear.items.shoulder.item_level}) `, inline: true },
+            { name: 'Back', value: `**${characterJSON.gear.items.back.name}** (${characterJSON.gear.items.back.item_level}) `, inline: true },
+            { name: 'Chest', value: `**${characterJSON.gear.items.chest.name}** (${characterJSON.gear.items.chest.item_level}) `, inline: true },
+            { name: 'Waist', value: `**${characterJSON.gear.items.waist.name}** (${characterJSON.gear.items.waist.item_level}) `, inline: true },
+            { name: 'Wrists', value: `**${characterJSON.gear.items.wrist.name}** (${characterJSON.gear.items.wrist.item_level}) `, inline: true },
+            { name: 'Hands', value: `**${characterJSON.gear.items.hands.name}** (${characterJSON.gear.items.hands.item_level}) `, inline: true },
+            { name: 'Legs', value: `**${characterJSON.gear.items.legs.name}** (${characterJSON.gear.items.legs.item_level}) `, inline: true },
+            { name: 'Feet', value: `**${characterJSON.gear.items.feet.name}** (${characterJSON.gear.items.feet.item_level}) `, inline: true },
+            { name: 'Finger 1', value: `**${characterJSON.gear.items.finger1.name}** (${characterJSON.gear.items.finger1.item_level}) `, inline: true },
+            { name: 'Finger 2', value: `**${characterJSON.gear.items.finger2.name}** (${characterJSON.gear.items.finger2.item_level}) `, inline: true },
+            { name: 'Trinket 1', value: `**${characterJSON.gear.items.trinket1.name}** (${characterJSON.gear.items.trinket1.item_level}) `, inline: true },
+            { name: 'Trinket 2', value: `**${characterJSON.gear.items.trinket2.name}** (${characterJSON.gear.items.trinket2.item_level}) `, inline: true },
+            { name: 'Mainhand', value: `**${characterJSON.gear.items.mainhand.name}** (${characterJSON.gear.items.mainhand.item_level}) `, inline: true }
         )
-        if (characterJSON.gear.offhand) {
-            messageEmbed.addField('Offhand', `**${characterJSON.gear.offhand.name}** (${characterJSON.gear.offhand.item_level}) `);
+        if (characterJSON.gear.items.offhand) {
+            messageEmbed.addField('Offhand', `**${characterJSON.gear.items.offhand.name}** (${characterJSON.gear.items.offhand.item_level}) `);
         }
 
         messageEmbed.setFooter(`${characterJSON.profile_url}`)
