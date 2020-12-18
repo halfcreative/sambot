@@ -9,7 +9,7 @@ const clanAudit = require('../commands/karutaAssist/clanAudit');
 const { viewChurch } = require('../services/mongoService');
 const church = require('../commands/karutaAssist/church');
 const noBotCommandsInGeneral = require('../commands/karutaAssist/noBotCommandsInGeneral');
-const getWowCharacter = require('../commands/wowAssist/getCharacter');
+const getRaiderIO = require('../commands/wowAssist/getIO');
 const setWowCharacter = require('../commands/wowAssist/setCharacter');
 
 
@@ -46,8 +46,8 @@ module.exports = async (client, msg) => {
         }
         // General Commands
         switch (splitMessage[0]) {
-            case '.char':
-                getWowCharacter(msg, splitMessage);
+            case '.io':
+                getRaiderIO(msg, splitMessage);
                 break;
             case '.setChar':
                 setWowCharacter(msg, splitMessage);
