@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const getCharacter = require('../../services/raiderIOService');
+const getIO = require('../../services/raiderIOService');
 const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getRaiderIO(msg, splitMessage) {
@@ -23,9 +23,9 @@ module.exports = async function getRaiderIO(msg, splitMessage) {
     }
     const userChar = await getUserCharacter(userId);
     if (userChar) {
-        const characterJSON = await getCharacter(userChar.realm, userChar.character);
+        const characterJSON = await getIO(userChar.realm, userChar.character);
         const messageEmbed = new MessageEmbed();
-        messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
+        messageEmbed.setTitle(`Raider IO Details for ${characterJSON.name}`);
         messageEmbed.setThumbnail(`${characterJSON.thumbnail_url}`);
         let characterMessage = `${characterJSON.name}, the ${characterJSON.active_spec_name} ${characterJSON.class} \n`;
         characterMessage += `ilvl : ${characterJSON.gear.item_level_equipped}`;

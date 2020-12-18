@@ -46,6 +46,9 @@ module.exports = async (client, msg) => {
         }
         // General Commands
         switch (splitMessage[0]) {
+            case '.char':
+                getWowCharacter(msg, splitMessage);
+                break;
             case '.io':
                 getRaiderIO(msg, splitMessage);
                 break;
