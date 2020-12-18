@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
-const getIO = require('../../services/raiderIOService');
 const { getUserCharacter } = require("../../services/mongoService");
+const { getIO } = require("../../services/raiderIOService");
 
 module.exports = async function getRaiderIO(msg, splitMessage) {
     let userId;
@@ -23,7 +23,7 @@ module.exports = async function getRaiderIO(msg, splitMessage) {
     }
     const userChar = await getUserCharacter(userId);
     if (userChar) {
-        const characterJSON = await getIO(userChar.realm, userChar.character);
+        const characterJSON = await get(userChar.realm, userChar.character);
         console.log(characterJSON);
         const messageEmbed = new MessageEmbed();
         messageEmbed.setTitle(`Raider IO Details for ${characterJSON.name}`);

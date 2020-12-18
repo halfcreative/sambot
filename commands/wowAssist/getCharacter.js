@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const getCharacter = require('../../services/raiderIOService');
+const { getCharacter } = require('../../services/raiderIOService');
 const { getUserCharacter } = require("../../services/mongoService");
 
 module.exports = async function getWowCharacter(msg, splitMessage) {
