@@ -24,6 +24,7 @@ module.exports = async function getWowCharacter(msg, splitMessage) {
     const userChar = await getUserCharacter(userId);
     if (userChar) {
         const characterJSON = await getCharacter(userChar.realm, userChar.character);
+        console.log(characterJSON);
         const messageEmbed = new MessageEmbed();
         messageEmbed.setTitle(`Character Details for ${characterJSON.name}`);
         messageEmbed.setThumbnail(`${characterJSON.thumbnail_url}`);
