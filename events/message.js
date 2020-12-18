@@ -10,6 +10,7 @@ const { viewChurch } = require('../services/mongoService');
 const church = require('../commands/karutaAssist/church');
 const noBotCommandsInGeneral = require('../commands/karutaAssist/noBotCommandsInGeneral');
 const getRaiderIO = require('../commands/wowAssist/getIO');
+const getWowCharacter = require('../commands/wowAssist/getCharacter');
 const setWowCharacter = require('../commands/wowAssist/setCharacter');
 
 
