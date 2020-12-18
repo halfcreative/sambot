@@ -24,6 +24,7 @@ module.exports = async function getRaiderIO(msg, splitMessage) {
     const userChar = await getUserCharacter(userId);
     if (userChar) {
         const characterJSON = await getIO(userChar.realm, userChar.character);
+        console.log(characterJSON);
         const messageEmbed = new MessageEmbed();
         messageEmbed.setTitle(`Raider IO Details for ${characterJSON.name}`);
         messageEmbed.setThumbnail(`${characterJSON.thumbnail_url}`);
