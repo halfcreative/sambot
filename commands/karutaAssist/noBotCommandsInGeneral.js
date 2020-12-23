@@ -1,4 +1,3 @@
-const { MessageAttachment } = require("discord.js");
 const { noBotCommands } = require("../preparedMessages/preparedMessages");
 
 
