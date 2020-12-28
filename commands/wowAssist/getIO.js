@@ -84,7 +84,7 @@ module.exports = async function getRaiderIO(msg, splitMessage) {
         let dungeonNames = '';
         let levels = '';
         let scores = '';
-        for (const dungeon of characterJSON.mythic_plus_highest_level_runs) {
+        for (const dungeon of characterJSON.mythic_plus_best_runs) {
             dungeonNames += `${dungeon.short_name}\n`;
             levels += `${dungeon.mythic_level}\n`;
             scores += `${dungeon.score}\n`;
