@@ -83,6 +83,7 @@ module.exports = async (client, msg) => {
             case 'kd':
             case 'kdrop':
             case 'k!drop':
+                console.log("drop command");
                 noBotCommandsInGeneral(msg);
                 break;
             default:
