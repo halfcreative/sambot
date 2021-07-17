@@ -12,6 +12,7 @@ const noBotCommandsInGeneral = require('../commands/karutaAssist/noBotCommandsIn
 const getRaiderIO = require('../commands/wowAssist/getIO');
 const getWowCharacter = require('../commands/wowAssist/getCharacter');
 const setWowCharacter = require('../commands/wowAssist/setCharacter');
+const nodeCheck = require('../commands/karutaAssist/nodeCheck');
 
 
 var serverNotificationSubscribers = [];
@@ -47,6 +48,9 @@ module.exports = async (client, msg) => {
         }
         // General Commands
         switch (splitMessage[0]) {
+            case '.nc':
+            case '.nodeCheck':
+                nodeCheck(msg);
             case '.char':
                 getWowCharacter(msg, splitMessage);
                 break;
