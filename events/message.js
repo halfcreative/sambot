@@ -51,6 +51,7 @@ module.exports = async (client, msg) => {
             case '.nc':
             case '.nodeCheck':
                 nodeCheck(msg);
+                break;
             case '.char':
                 getWowCharacter(msg, splitMessage);
                 break;
