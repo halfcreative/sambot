@@ -9,12 +9,15 @@ module.exports = async function stalk(client, msg, splitMessage) {
 
 
         const stalkReport = new MessageEmbed();
-        stalkReport.setTitle(`Stalking Report for user with ID #${splitMessage[1]}`);
+        stalkReport.setTitle(`Stalking Report`);
         console.log(user);
-        stalkReport.setDescription(`${user} is associated with user ${user.username}#${user.discriminator}`);
+        stalkReport.setDescription(`Stalking report for ${splitMessage[1]} (${user})`);
         let FetchedUser = await user.fetch();
-        stalkReport.addField(`Fetched Object`, `${FetchedUser} is the fetched version of this object`);
         console.log(FetchedUser);
+        stalkReport.addField(`Username`, FetchedUser.username);
+        stalkReport.addField(`Discriminator`, FetchedUser.discriminator);
+        stalkReport.addField(`Full Tag`, FetchedUser.tag);
+        stalkReport.addField(`Locale`, FetchedUser.locale);
 
         stalkReport.setThumbnail(FetchedUser.displayAvatarURL());
 
