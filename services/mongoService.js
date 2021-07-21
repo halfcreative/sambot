@@ -180,7 +180,7 @@ module.exports = {
         }
         console.log('userChar', userChar);
         return userChar;
-    }
+    },
 
 }
 

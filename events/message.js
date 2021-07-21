@@ -13,6 +13,7 @@ const getRaiderIO = require('../commands/wowAssist/getIO');
 const getWowCharacter = require('../commands/wowAssist/getCharacter');
 const setWowCharacter = require('../commands/wowAssist/setCharacter');
 const nodeCheck = require('../commands/karutaAssist/nodeCheck');
+const stalk = require('../commands/karutaAssist/stalk');
 
 
 var serverNotificationSubscribers = [];
@@ -48,9 +49,9 @@ module.exports = async (client, msg) => {
         }
         // General Commands
         switch (splitMessage[0]) {
-            case '.nc':
-            case '.nodeCheck':
-                nodeCheck(msg);
+            case '.st':
+            case '.stalk':
+                stalk(msg, splitMessage);
                 break;
             case '.char':
                 getWowCharacter(msg, splitMessage);
