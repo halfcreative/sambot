@@ -15,7 +15,7 @@ module.exports = async function stalk(client, msg, splitMessage) {
         stalkReport.setDescription(`${user} is associated with user ${user.username}#${user.discriminator}`);
         let FetchedUser = await user.fetch();
         stalkReport.addField(`Fetched Object`, `${FetchedUser} is the fetched version of this object`);
-        console.log(`${FetchedUser}`);
+        console.log(FetchedUser);
         msg.channel.send(stalkReport);
 
         // let x = await msg.channel.users.fetch(splitMessage[1]);
