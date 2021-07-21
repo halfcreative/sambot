@@ -14,10 +14,10 @@ module.exports = async function stalk(client, msg, splitMessage) {
         stalkReport.setDescription(`Stalking report for ${splitMessage[1]} (${user})`);
         let FetchedUser = await user.fetch();
         console.log(FetchedUser);
-        stalkReport.addField(`Username`, FetchedUser.username);
-        stalkReport.addField(`Discriminator`, FetchedUser.discriminator);
+        stalkReport.addField(`Username`, FetchedUser.username, true);
+        stalkReport.addField(`Discriminator`, FetchedUser.discriminator, true);
         stalkReport.addField(`Full Tag`, FetchedUser.tag);
-        stalkReport.addField(`Locale`, FetchedUser.locale);
+        stalkReport.addField(`Locale`, FetchedUser.locale, true);
 
         stalkReport.setThumbnail(FetchedUser.displayAvatarURL());
 
