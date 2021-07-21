@@ -19,6 +19,7 @@ module.exports = async function stalk(client, msg, splitMessage) {
         stalkReport.addField(`Full Tag`, FetchedUser.tag);
         stalkReport.addField(`Locale`, FetchedUser.locale, true);
 
+        console.log(FetchedUser.presence);
         stalkReport.setThumbnail(FetchedUser.displayAvatarURL());
 
         msg.channel.send(stalkReport);
