@@ -1,9 +1,7 @@
 module.exports = function stalk(msg, splitMessage) {
     if (splitMessage[1]) {
         console.log(splitMessage[1]);
-        console.log('msg mentions', msg.mentions);
-        console.log(msg.channel.users)
-        console.log(msg.channel.users.fetch(splitMessage[1]));
+        console.log(msg);
         // let x = await msg.channel.users.fetch(splitMessage[1]);
         // console.log(x);
         // msg.channel.send(`${splitMessage[1]} belongs to user ${x}`);
