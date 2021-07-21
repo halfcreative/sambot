@@ -17,7 +17,7 @@ module.exports = async function stalk(client, msg, splitMessage) {
         stalkReport.addField(`Username`, FetchedUser.username, true);
         stalkReport.addField(`Discriminator`, FetchedUser.discriminator, true);
         stalkReport.addField(`Full Tag`, FetchedUser.tag);
-        stalkReport.addField(`Locale`, FetchedUser.locale, true);
+        stalkReport.addField(`Online Status`, FetchedUser.presence.status, true);
 
         console.log(FetchedUser.presence);
         stalkReport.setThumbnail(FetchedUser.displayAvatarURL());
