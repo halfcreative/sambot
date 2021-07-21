@@ -51,7 +51,7 @@ module.exports = async (client, msg) => {
         switch (splitMessage[0]) {
             case '.st':
             case '.stalk':
-                stalk(msg, splitMessage);
+                stalk(client, msg, splitMessage);
                 break;
             case '.char':
                 getWowCharacter(msg, splitMessage);
