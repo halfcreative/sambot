@@ -8,7 +8,7 @@ module.exports = async function stalk(client, msg, splitMessage) {
         let x = await client.users.fetch(splitMessage[1]);
         console.log(x);
         console.log("send");
-        msg.channel.send(x);
+        msg.channel.send(`${splitMessage[1]} is associated with user ${x}`);
         // let x = await msg.channel.users.fetch(splitMessage[1]);
         // console.log(x);
         // msg.channel.send(`${splitMessage[1]} belongs to user ${x}`);
