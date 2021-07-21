@@ -10,8 +10,9 @@ module.exports = async function stalk(client, msg, splitMessage) {
 
         const stalkReport = new MessageEmbed();
         stalkReport.setTitle(`Stalking Report for user with ID #${splitMessage[1]}`);
-        stalkReport.setThumbnail(user.defaultAvatarURL);
-        stalkReport.setDescription(`<${user} is associated with user ${user.username}#${user.discriminator}`)
+        stalkReport.setThumbnail(user.avatarURL);
+        stalkReport.setDescription(`${user} is associated with user ${user.username}#${user.discriminator}`);
+        stalkReport.addField(`Locale`, user.locale);
         msg.channel.send(stalkReport);
 
         // let x = await msg.channel.users.fetch(splitMessage[1]);
