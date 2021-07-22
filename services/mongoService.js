@@ -185,8 +185,26 @@ module.exports = {
 }
 
 function rankings(count) {
-    if (count > 20000) {
-        return 'Low Angel';
+    if (count > 110000) {
+        return 'God';
+    } else if (count > 100000) {
+        return 'Seraph'
+    } else if (count > 90000) {
+        return 'Cherub'
+    } else if (count > 80000) {
+        return 'Throne'
+    } else if (count > 70000) {
+        return 'Dominion';
+    } else if (count > 60000) {
+        return 'Virtue';
+    } else if (count > 50000) {
+        return 'Power';
+    } else if (count > 40000) {
+        return 'Principality';
+    } else if (count > 30000) {
+        return 'Archangel';
+    } else if (count > 20000) {
+        return 'Angel';
     } else if (count > 10000) {
         return 'Pope';
     } else if (count > 5000) {
