@@ -1,9 +1,9 @@
-module.exports = async client => {
+module.exports = async (client, message) => {
     if (!client.application?.owner) await client.application?.fetch();
 
     if (message.content.toLowerCase() === '!deploy' && message.author.id === client.application?.owner.id) {
         const data = {
-            name: 'tryMe',
+            name: 'tryme',
             description: 'fuckin fight me bitch!',
         };
 
