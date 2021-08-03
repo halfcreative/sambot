@@ -97,7 +97,7 @@ module.exports = async (client, msg) => {
                     name: 'tryme',
                     description: 'fuckin fight me bitch!',
                 };
-                const command = await client.application?.commands.create(data);
+                const command = await client.guilds.fetch(data).commands.create(data);
                 console.log(command);
                 break;
             default:
