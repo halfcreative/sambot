@@ -97,7 +97,7 @@ module.exports = async (client, msg) => {
                     name: 'tryme',
                     description: 'fuckin fight me bitch!',
                 };
-                const command = await client.guilds.cache.get('469682998619406353').commands.create(data);
+                const command = (await client.guilds.cache.get('469682998619406353')).commands.create(data);
                 console.log(command);
                 break;
             default:
