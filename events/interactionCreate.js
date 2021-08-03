@@ -1,4 +1,4 @@
-module.exports = (client, interaction) => {
+module.exports = async (client, interaction) => {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'ping') {
