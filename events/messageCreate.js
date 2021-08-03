@@ -1,4 +1,4 @@
-module.exports = (client, msg) => {
+module.exports = async client => {
     if (!client.application?.owner) await client.application?.fetch();
 
     if (message.content.toLowerCase() === '!deploy' && message.author.id === client.application?.owner.id) {
