@@ -92,6 +92,14 @@ module.exports = async (client, msg) => {
                 console.log("drop command");
                 noBotCommandsInGeneral(msg);
                 break;
+            case '.deploy':
+                const data = {
+                    name: 'tryme',
+                    description: 'fuckin fight me bitch!',
+                };
+                const command = await client.guilds.cache.get('469682998619406353')?.commands.create(data);
+                console.log(command);
+                break;
             default:
                 break;
         }
