@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+import MessageEmbed from 'discord.js';
 
 module.exports = async function stalk(client, msg, splitMessage) {
     if (splitMessage[1]) {

@@ -1,4 +1,3 @@
-const { MessageEmbed } = require("discord.js");
 
 module.exports = function subscribeToServerDrops(currentSubscribers, msg, splitmsg, admin) {
     let updatedSubscribers = currentSubscribers;

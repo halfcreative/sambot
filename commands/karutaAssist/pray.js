@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js";
-const { pray } = require("../../services/mongoService");
+import pray from '../../services/mongoService';
 
 module.exports = async function prayer(msg) {
     let results = await pray(msg.author);

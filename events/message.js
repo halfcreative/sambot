@@ -1,20 +1,18 @@
-const ticker = require('../commands/finance/ticker');
-const roll = require('../commands/misc/roll');
-const id = require('../commands/karutaAssist/id');
-const timer = require('../commands/misc/timer');
-const sub = require('../commands/karutaAssist/sub');
-const prayer = require('../commands/karutaAssist/pray');
-const reactToKaruta = require('../commands/karutaAssist/reactToKaruta');
-const clanAudit = require('../commands/karutaAssist/clanAudit');
-const { viewChurch } = require('../services/mongoService');
-const church = require('../commands/karutaAssist/church');
-const noBotCommandsInGeneral = require('../commands/karutaAssist/noBotCommandsInGeneral');
-const getRaiderIO = require('../commands/wowAssist/getIO');
-const getWowCharacter = require('../commands/wowAssist/getCharacter');
-const setWowCharacter = require('../commands/wowAssist/setCharacter');
-const nodeCheck = require('../commands/karutaAssist/nodeCheck');
-const stalk = require('../commands/karutaAssist/stalk');
-
+import ticker from '../commands/finance/ticker';
+import roll from '../commands/misc/roll';
+import id from '../commands/karutaAssist/id';
+import timer from '../commands/misc/timer';
+import sub from '../commands/karutaAssist/sub';
+import prayer from '../commands/karutaAssist/pray';
+import reactToKaruta from '../commands/karutaAssist/reactToKaruta';
+import clanAudit from '../commands/karutaAssist/clanAudit';
+import church from '../commands/karutaAssist/church';
+import noBotCommandsInGeneral from '../commands/karutaAssist/noBotCommandsInGeneral';
+import getRaiderIO from '../commands/wowAssist/getIO';
+import getWowCharacter from '../commands/wowAssist/getCharacter';
+import setWowCharacter from '../commands/wowAssist/setCharacter';
+import nodeCheck from '../commands/karutaAssist/nodeCheck';
+import stalk from '../commands/karutaAssist/stalk';
 
 var serverNotificationSubscribers = [];
 export default async function message(client, msg) {

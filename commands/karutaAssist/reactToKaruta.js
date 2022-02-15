@@ -1,4 +1,4 @@
-const { recordWork, clanAttack } = require("../../services/mongoService");
+import { recordWork, clanAttack } from "../../services/mongoService";
 
 module.exports = async function reactToKaruta(msg) {
     let messageType = checkKarutaMessageType(msg);
