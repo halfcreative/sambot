@@ -1,4 +1,4 @@
-import MongoClient from 'mongodb/lib/mongo_client';
+import MongoClient from 'mongodb';
 const uri = process.env.MONGO_URL;
 
 module.exports = {
