@@ -8,9 +8,11 @@ const client = new Discord.Client();
 fs.readdir("./events/", (err, files) => {
     files.forEach(file => {
         console.log("file", file)
-        const eventHandler = events[file.split(".")[0]];
         const eventName = file.split(".")[0]
-        client.on(eventName, (...args) => eventHandler(client, ...args))
+        if (eventName != "events") {
+            const eventHandler = events[file.split(".")[0]];
+            client.on(eventName, (...args) => eventHandler(client, ...args))
+        }
     })
 })
 
