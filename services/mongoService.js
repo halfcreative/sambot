@@ -1,7 +1,7 @@
 import MongoClient from 'mongodb';
 const uri = process.env.MONGO_URL;
 
-module.exports = {
+export default {
 
     currentAttackCycle: async function () {
         const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
