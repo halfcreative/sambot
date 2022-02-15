@@ -1,4 +1,4 @@
-const yfinance = require('yahoo-finance');
+import yfinance from 'yahoo-finance';
 
 export default async function ticker(msg, splitMessage) {
     if (splitMessage[1]) {
