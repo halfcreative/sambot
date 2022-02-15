@@ -1,5 +1,5 @@
 
-export async function interaction(client, interaction) {
+export default async function interaction(client, interaction) {
     if (!interaction.isCommand()) return;
 
     if (interaction.commandName === 'tryme') {
