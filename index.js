@@ -1,6 +1,6 @@
 require("dotenv").config();
-const fs = require('fs');
-const Discord = require("discord.js");
+import fs from 'fs';
+import Discord from 'discord.js';
 const client = new Discord.Client();
 
 
