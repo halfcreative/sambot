@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+import MongoClient from 'mongodb/lib/mongo_client';
 const uri = process.env.MONGO_URL;
 
 module.exports = {

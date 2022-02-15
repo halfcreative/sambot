@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
 const { pray } = require("../../services/mongoService");
 
 module.exports = async function prayer(msg) {
