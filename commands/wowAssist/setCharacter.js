@@ -1,5 +1,5 @@
 import { MessageEmbed } from 'discord.js';
-import { setUserCharacter } from '../../services/mongoService';
+import { setUserCharacter } from '../../services/mongoService.js';
 
 export default async function setWowCharacter(msg, splitMessage) {
     if (splitMessage[1] && splitMessage[2]) {
