@@ -1,6 +1,6 @@
 import { recordWork, clanAttack } from "../../services/mongoService.js";
 
-export async function reactToKaruta(msg) {
+export default async function reactToKaruta(msg) {
     let messageType = checkKarutaMessageType(msg);
     if (messageType == 1) {
         // console.log(`Number of subs ${serverNotificationSubscribers.length}`);

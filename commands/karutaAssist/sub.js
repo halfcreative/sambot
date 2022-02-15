@@ -1,5 +1,5 @@
 
-export function subscribeToServerDrops(currentSubscribers, msg, splitmsg, admin) {
+export default function subscribeToServerDrops(currentSubscribers, msg, splitmsg, admin) {
     let updatedSubscribers = currentSubscribers;
 
     // if (splitmsg[1]) {
