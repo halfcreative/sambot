@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js";
-const { getMemberContributions, currentAttackCycle } = require("../../services/mongoService");
+import { getMemberContributions, currentAttackCycle } from "../../services/mongoService.js"
 
 module.exports = async function clanAudit(msg) {
     let clanMembers = await getMemberContributions(msg);
