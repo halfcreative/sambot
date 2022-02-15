@@ -1,6 +1,6 @@
 const yfinance = require('yahoo-finance');
 
-module.exports = async function ticker(msg, splitMessage) {
+export default async function ticker(msg, splitMessage) {
     if (splitMessage[1]) {
         await yfinance.quote({
             symbol: splitMessage[1],
