@@ -10,6 +10,7 @@ fs.readdir("./events/", (err, files) => {
         console.log("file", file)
         const eventName = file.split(".")[0]
         if (eventName != "events") {
+            console.log(events[file.split(".")]);
             const eventHandler = events[file.split(".")[0]];
             client.on(eventName, (...args) => eventHandler(client, ...args))
         }
