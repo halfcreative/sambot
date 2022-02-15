@@ -1,6 +1,6 @@
-const seedrandom = require('seedrandom');
+import seedrandom from 'seedrandom';
 
-module.exports = function roll(msg, splitMessage) {
+export default function roll(msg, splitMessage) {
     const rng = seedrandom();
     if (splitMessage[1] == parseInt(splitMessage[1])) {
         let roll = Math.ceil(rng() * parseInt(splitMessage[1]));

@@ -1,6 +1,6 @@
 
 var timers = [];
-module.exports = function dtimer(msg, splitMessage, isAdmin) {
+export default function dtimer(msg, splitMessage, isAdmin) {
     let userTimers = timersForAuthor(msg.author.id);
     if (splitMessage[1]) {
         if (splitMessage[1] == parseInt(splitMessage[1])) {
