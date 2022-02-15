@@ -1,6 +1,6 @@
 import MessageEmbed from 'discord.js';
 
-module.exports = async function stalk(client, msg, splitMessage) {
+export async function stalk(client, msg, splitMessage) {
     if (splitMessage[1]) {
         console.log(splitMessage[1]);
         console.log(msg);

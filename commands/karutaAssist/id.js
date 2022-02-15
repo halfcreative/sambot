@@ -1,4 +1,4 @@
-module.exports = function id(msg, splitMessage) {
+export function id(msg, splitMessage) {
     if (splitMessage[1]) {
         console.log(splitMessage[1]);
         console.log('msg mentions', msg.mentions);
