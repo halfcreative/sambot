@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js';
 import { getUserCharacter } from '../../services/mongoService.js';
-import getIO from '../../services/raiderIOService.js';
+import { getIO } from '../../services/raiderIOService.js';
 
 export default async function getRaiderIO(msg, splitMessage) {
     let userId;
