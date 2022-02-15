@@ -1,8 +1,8 @@
 const { MessageEmbed } = require('discord.js');
-const { getCharacter } = require('../../services/raiderIOService');
-const { getUserCharacter } = require("../../services/mongoService");
+const { getCharacter } = require('../../services/raiderIOService.js');
+const { getUserCharacter } = require("../../services/mongoService.js");
 
-module.exports = async function getWowCharacter(msg, splitMessage) {
+export default async function getWowCharacter(msg, splitMessage) {
     let userId;
     if (splitMessage[1]) {
         if (msg.mentions) {
