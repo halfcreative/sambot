@@ -1,7 +1,7 @@
 import 'dotenv/config.js';
 import fs from 'fs';
 import Discord from 'discord.js';
-import *  as events from './events/events';
+import *  as events from './events/events.js';
 const client = new Discord.Client();
 
 
