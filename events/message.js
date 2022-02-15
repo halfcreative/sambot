@@ -17,7 +17,7 @@ const stalk = require('../commands/karutaAssist/stalk');
 
 
 var serverNotificationSubscribers = [];
-module.exports = async (client, msg) => {
+export async function message(client, msg) {
     // Check first if message is bot
     if (!msg.author.bot) {
 
