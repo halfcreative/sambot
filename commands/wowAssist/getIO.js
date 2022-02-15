@@ -1,6 +1,6 @@
-const { MessageEmbed } = require('discord.js');
-const { getUserCharacter } = require("../../services/mongoService.js");
-const { getIO } = require("../../services/raiderIOService.js");
+import { MessageEmbed } from 'discord.js';
+import { getUserCharacter } from '../../services/mongoService.js';
+import getIO from '../../services/raiderIOService.js';
 
 export default async function getRaiderIO(msg, splitMessage) {
     let userId;
