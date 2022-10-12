@@ -104,7 +104,6 @@ export async function recordWork(userId, power) {
 
 export async function pray(user) {
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    let prayers = null;
     const returnObj = {
         userPrayObj: null,
         rankUpgrade: false,
