@@ -1,13 +1,14 @@
 import { MessageEmbed } from "discord.js";
-import { pray } from '../../services/mongoService.js';
+import { pray } from '../services/mongoService.js';
 
-export default async function prayer(msg) {
+exports.handler = async (event) => {
+
+}
+
+async function prayer(msg) {
     let results = await pray(msg.author);
     if (results.success) {
         const prayerMessage = new MessageEmbed();
-        // msg.channel.send('Praise Craig! Praise Bryan!');
-        // msg.channel.send('For the lands are lost, but the bonds remain.');
-        // msg.channel.send('Long live the royal rat!');
         prayerMessage.setTitle(':pray: Prayer Successful :pray:');
         let message = `You are now devotion level ${results.userPrayObj.prayers} \n`;
         if (results.rankUpgrade) {

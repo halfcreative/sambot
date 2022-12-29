@@ -1,6 +1,6 @@
 import ticker from '../commands/finance/ticker.js';
 import roll from '../commands/misc/roll.js';
-import prayer from '../commands/church/pray.js';
+import prayer from '../functions/pray.js';
 import church from '../commands/church/church.js';
 import play from '../commands/music/music.js';
 
