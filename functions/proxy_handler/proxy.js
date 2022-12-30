@@ -42,11 +42,12 @@ export async function handler(event, context, callback) {
     if (body.data.name) {
         const params = {
             Message: JSON.stringify(body, null, 2),
+            MessageGroupId: "sambot",
             Subject: "Test SNS From Lambda",
             TopicArn: process.env.TOPIC_ARN,
             MessageAttributes: { "command": { DataType: 'String', StringValue: body.data.name } }
         };
-        const response = await snsClient.send(PublishCommand(params));
+        const response = await snsClient.send(new PublishCommand(params));
 
         if (response.MessageId) {
             return {
