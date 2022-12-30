@@ -51,8 +51,9 @@ export async function handler(event, context, callback) {
             TopicArn: process.env.TOPIC_ARN,
             MessageAttributes: { "command": { DataType: 'String', StringValue: body.data.name } }
         };
+        console.info("Pushing to SNS");
         const response = await snsClient.send(new PublishCommand(params));
-        console.info(response);
+        console.info("SNS Response: ", response);
         if (response.MessageId) {
             return {
                 statusCode: 200,
