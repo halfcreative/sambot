@@ -1,7 +1,7 @@
-import ticker from '../commands/finance/ticker.js';
-import roll from '../commands/misc/roll.js';
+import ticker from '../functions/finance/ticker.js';
+import roll from '../functions/roll/roll.js';
 import prayer from '../functions/pray/pray.js';
-import church from '../commands/church/church.js';
+import church from '../functions/church/church.js';
 import play from '../commands/music/music.js';
 
 export default async function message(__client, msg) {
