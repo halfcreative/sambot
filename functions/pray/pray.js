@@ -1,10 +1,12 @@
-import { MessageEmbed } from "discord.js";
-import { pray } from '../services/mongoService.js';
 
 exports.handler = async (event) => {
 
+
+
 }
 
+import { MessageEmbed } from "discord.js";
+import { pray } from '../../services/mongoService.js';
 async function prayer(msg) {
     let results = await pray(msg.author);
     if (results.success) {
