@@ -1,6 +1,7 @@
 {
   "name": "proxy_handler",
   "version": "1.0.0",
+  "type": "module",
   "description": "takes incoming recquests from aws, and forwards them into an sns queue to be processed by the corresponding function",
   "main": "proxy.js",
   "scripts": {
