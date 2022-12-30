@@ -1,6 +1,6 @@
 import { SNSClient, PublishCommand } from "@aws-sdk/client-sns";
 
-const REGION = "us-east-1";
+const REGION = process.env.REGION;
 const snsClient = new SNSClient({ region: REGION });
 const nacl = require('tweetnacl');
 
@@ -28,7 +28,6 @@ exports.handler = async (event) => {
         }
     }
 
-
     // Replying to ping (requirement 2.)
     const body = JSON.parse(strBody)
     if (body.type == 1) {
@@ -53,7 +52,7 @@ exports.handler = async (event) => {
                 statusCode: 200,
                 body: JSON.stringify({
                     "type": 4,
-                    "data": { "content": "*⏳ Loading...*" }
+                    "data": { "content": "*Loading...*" }
                 })
             }
         }
