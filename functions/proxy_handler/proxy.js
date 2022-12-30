@@ -5,6 +5,7 @@ const REGION = process.env.REGION;
 const snsClient = new SNSClient({ region: REGION });
 
 export async function handler(event, context, callback) {
+    console.info(`Event recieved`);
     const strBody = event.body; // should be string, for successful sign
 
     if (!event.headers['test']) {
@@ -21,16 +22,19 @@ export async function handler(event, context, callback) {
         );
 
         if (!isVerified) {
-            console.info("Unverified request signature");
+            console.warn("Invalid Request Signature");
             return {
                 statusCode: 401,
                 body: JSON.stringify('invalid request signature'),
             };
+        } else {
+            console.info("Request Signature Verified")
         }
     }
 
     // Replying to ping (requirement 2.)
-    const body = JSON.parse(strBody)
+    const body = JSON.parse(strBody);
+    console.info(`Body type : ${body.type}`);
     if (body.type == 1) {
         return {
             statusCode: 200,
@@ -40,6 +44,7 @@ export async function handler(event, context, callback) {
 
     // Handle command (send to SNS to be picked up by one of Lambdas)
     if (body.data.name) {
+        console.info(`Command name recieved: ${body.data.name}`);
         const params = {
             Message: JSON.stringify(body, null, 2),
             Subject: "Test SNS From Lambda",
@@ -47,7 +52,7 @@ export async function handler(event, context, callback) {
             MessageAttributes: { "command": { DataType: 'String', StringValue: body.data.name } }
         };
         const response = await snsClient.send(new PublishCommand(params));
-
+        console.info(response);
         if (response.MessageId) {
             return {
                 statusCode: 200,
