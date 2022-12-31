@@ -6,4 +6,4 @@ Sambot is a discord chat bot with a variety of functions. The only common theme 
 
 ## Whats new in 2.0
 
-Sambot 2.0 is an achitecture overhaul. Where previosuly sambot would listen to messages in a server and respond to key phrases, sambot will now wait for commands to be issued to it. This has allowed for Sambot to transition to a listener-style serverless application. 
+Sambot 2.0 is an achitecture overhaul. Where previosuly sambot would listen to messages in a server and respond to key phrases, sambot will now wait for commands to be issued to it. This has allowed for Sambot to transition to a listener-style serverless application.
