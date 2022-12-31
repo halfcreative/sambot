@@ -1,4 +1,4 @@
-# Sambot 2.0 (My personal bot for discord - Improved)
+# Sambot (My personal bot for discord - Improved)
 
 ## What is Sambot?
 

@@ -5,8 +5,7 @@
   "description": "",
   "main": "pray.js",
   "scripts": {
-    "zip": "zip -r ../../exports/pray.zip *",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "zip": "zip -r ../../exports/pray.zip *"
   },
   "author": "",
   "license": "ISC",

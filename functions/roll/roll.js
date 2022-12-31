@@ -34,7 +34,14 @@ export async function handler(event) {
 
     const response = {
         body: {
-            "content": `Your roll is ${roll}/${minMax.max}`
+            "embeds": [
+                {
+                    "type": "rich",
+                    "title": `Roll :game_die:`,
+                    "description": `Your roll is **${roll}/${minMax.max}**`,
+                    "color": 0x676868
+                }
+            ]
         }
     }
 

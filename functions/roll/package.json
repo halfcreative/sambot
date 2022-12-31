@@ -5,8 +5,7 @@
   "description": "",
   "main": "roll.js",
   "scripts": {
-    "zip": "zip -r ../../exports/roll.zip *",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "zip": "zip -r ../../exports/roll.zip *"
   },
   "author": "",
   "license": "ISC",

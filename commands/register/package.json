@@ -4,8 +4,7 @@
   "description": "",
   "main": "register.js",
   "scripts": {
-    "register": "node register.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "register": "node register.js"
   },
   "author": "",
   "license": "ISC",
