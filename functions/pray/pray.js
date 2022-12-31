@@ -13,7 +13,9 @@ export async function handler(event) {
     console.info(`Prayer initiated by : ${user}`);
 
     const response = {
-        "content": ``
+        body: {
+            "content": ``
+        }
     }
     //Get current prayers
     const getParams = {
@@ -27,7 +29,7 @@ export async function handler(event) {
     const getResponse = await client.send(new GetItemCommand(getParams));
     console.info("Response from Dynamodb", getResponse);
     if (!getResponse.Item) {
-        response.content = `${response.content}\n Welcome to the Church!`;
+        response.body.content = `${response.body.content}\n Welcome to the Church!`;
     }
     console.info("getResponse.Item: ", getResponse.Item);
     const getRecord = unmarshall(getResponse.Item)
@@ -45,9 +47,9 @@ export async function handler(event) {
     const putResponse = await client.send(new PutItemCommand(putParams));
     console.info("Response from Dynamodb", putResponse);
     if (putResponse.Attributes) {
-        response.content = `Prayer Successful!\n You are now level ${newPrayerValue}`;
+        response.body.content = `Prayer Successful!\n You are now level ${newPrayerValue}`;
     } else {
-        response.content = `Prayer Failed! Yell at Sam to fix the bot!`;
+        response.body.content = `Prayer Failed! Yell at Sam to fix the bot!`;
     }
 
     const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
