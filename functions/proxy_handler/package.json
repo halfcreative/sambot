@@ -1,0 +1,17 @@
+{
+  "name": "proxy_handler",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "takes incoming recquests from aws, and forwards them into an sns queue to be processed by the corresponding function",
+  "main": "proxy.js",
+  "scripts": {
+    "zip": "zip -r ../../exports/proxy.zip *",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-sns": "^3.241.0",
+    "tweetnacl": "^1.0.3"
+  }
+}

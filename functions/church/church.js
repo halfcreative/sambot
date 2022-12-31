@@ -1,5 +1,4 @@
 import { MessageEmbed } from "discord.js";
-import { viewChurch } from '../../services/mongoService.js';
 
 export default async function church(msg) {
     let results = await viewChurch();
