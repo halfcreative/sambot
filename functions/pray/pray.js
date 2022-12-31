@@ -1,6 +1,7 @@
 import { DynamoDBClient, GetItemCommand, PutItemCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
-import axios from "axios";
+import { REST } from '@discordjs/rest';
+import { Routes } from 'discord-api-types/v10';
 
 export async function handler(event) {
 
@@ -49,7 +50,8 @@ export async function handler(event) {
         response.content = `Prayer Failed! Yell at Sam to fix the bot!`;
     }
 
-    await axios.patch(`https://discord.com/api/v10/webhooks/${body.application_id}/${body.token}/messages/@original`, response)
+    const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
+    await rest.patch(Routes.webhookMessage(body.application_id, body.token), response)
         .then(function (response) {
             console.info("response:", response);
         })
