@@ -47,7 +47,17 @@ export async function handler(event) {
     const putResponse = await client.send(new PutItemCommand(putParams));
     console.info("Response from Dynamodb", putResponse);
     if (putResponse.Attributes) {
-        response.body.content = `Prayer Successful!\n You are now level ${newPrayerValue}`;
+        response.body.embeds = [
+            {
+                "type": "rich",
+                "title": `Prayer Successful!`,
+                "description": `You are degeneracy manifest!\n\n**Prayer Level :** ${newPrayerValue - 1} -> :sparkles: **${newPrayerValue}** :sparkles:\n\nYou feel a little luckier...`,
+                "color": 0x676868,
+                "footer": {
+                    "text": `Thank you for praying to the Church of Degen`
+                }
+            }
+        ];
     } else {
         response.body.content = `Prayer Failed! Yell at Sam to fix the bot!`;
     }
