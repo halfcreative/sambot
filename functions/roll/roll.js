@@ -1,7 +1,8 @@
-const seedrandom = require('seedrandom');
-const axios = require('axios').default;
+import seedrandom from 'seedrandom';
+import { REST } from '@discordjs/rest';
+import { Routes } from 'discord-api-types/v10';
 
-exports.handler = async (event) => {
+export async function handler(event) {
 
     const body = JSON.parse(event.Records[0].Sns.Message);
     console.info("Event Body:", body);
@@ -32,10 +33,14 @@ exports.handler = async (event) => {
     const roll = Math.floor(rng() * (minMax.max - minMax.min + 1)) + minMax.min;
 
     const response = {
-        "content": `Your roll is ${roll}/${minMax.max}`
+        body: {
+            "content": `Your roll is ${roll}/${minMax.max}`
+        }
     }
 
-    await axios.patch(`https://discord.com/api/v10/webhooks/${body.application_id}/${body.token}/messages/@original`, response)
+    const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
+
+    await rest.patch(Routes.webhookMessage(body.application_id, body.token), response)
         .then(function (response) {
             console.info("response:", response);
         })
