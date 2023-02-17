@@ -47,7 +47,7 @@ export async function handler(event) {
     }
     const putResponse = await client.send(new PutItemCommand(putParams));
     console.info("Response from Dynamodb", putResponse);
-    if (putResponse.Attributes) {
+    if (putResponse.$metadata.httpStatusCode == 200) {
         response.body.embeds = [
             {
                 "type": "rich",
