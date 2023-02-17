@@ -37,6 +37,19 @@ for (let guild of GUILDS) {
             "name": "pray",
             "type": 1,
             "description": "Pray."
+        },
+        {
+            "name": "pokedex",
+            "type": 1,
+            "description": "Gives information about a pokemon",
+            "options": [
+                {
+                    name: "pokemon",
+                    description: "The name of the pokemon you want information about",
+                    type: 3,
+                    required: true
+                }
+            ]
         }
     ]
 

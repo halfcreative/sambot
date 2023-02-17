@@ -1,0 +1,19 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "pokedex.js",
+  "scripts": {
+    "cleanOldZip": "rm ../../exports/pokedex.zip",
+    "zip": "zip -r ../../exports/pokedex.zip *",
+    "cleanZip": "node run cleanOldZip && node run zip"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^1.5.0",
+    "@pkmn/dex": "^0.7.12",
+    "discord-api-types": "^0.37.25"
+  }
+}

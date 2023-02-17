@@ -32,10 +32,11 @@ export async function handler(event) {
         response.body.content = `${response.body.content}\n Welcome to the Church!`;
     }
     console.info("getResponse.Item: ", getResponse.Item);
-    const getRecord = unmarshall(getResponse.Item)
+
+    const getRecord = getResponse.Item ? unmarshall(getResponse.Item) : getResponse.Item;
     console.info("unmarshalled object: ", getRecord);
 
-    const newPrayerValue = getResponse.Item ? getRecord.prayers + 1 : 1;
+    const newPrayerValue = getRecord ? getRecord.prayers + 1 : 1;
     const putParams = {
         TableName: "Church",
         Item: {
