@@ -21,9 +21,9 @@ export async function handler(event) {
     const getParams = {
         TableName: "Church",
         Key: {
-            user: { S: user },
+            uid: { S: user },
         },
-        ProjectionExpression: "prayers",
+        ProjectionExpression: "prayers, ts",
     };
     console.info("Checking DynamoDB");
     const getResponse = await client.send(new GetItemCommand(getParams));
@@ -36,32 +36,40 @@ export async function handler(event) {
     const getRecord = getResponse.Item ? unmarshall(getResponse.Item) : getResponse.Item;
     console.info("unmarshalled object: ", getRecord);
 
-    const newPrayerValue = getRecord ? getRecord.prayers + 1 : 1;
-    const putParams = {
-        TableName: "Church",
-        Item: {
-            user: { S: user },
-            prayers: { N: `${newPrayerValue}` }
-        },
-        ReturnValues: "ALL_OLD", //Has to be all old or none
-    }
-    const putResponse = await client.send(new PutItemCommand(putParams));
-    console.info("Response from Dynamodb", putResponse);
-    if (putResponse.$metadata.httpStatusCode == 200) {
-        response.body.embeds = [
-            {
-                "type": "rich",
-                "title": `Prayer Successful!`,
-                "description": `You are degeneracy manifest!\n\n**Prayer Level :** ${newPrayerValue - 1} -> :sparkles: **${newPrayerValue}** :sparkles:\n\nYou feel a little luckier...`,
-                "color": 0x676868,
-                "footer": {
-                    "text": `Thank you for praying to the Church of Degen`
+    const timeDiff = getRecord.ts ? Math.abs(new Date(getRecord.ts) - new Date()) : 360000;
+    const minuteDiff = (timeDiff / (1000 * 60))
+    if (minuteDiff > 5) {
+        const newPrayerValue = getRecord ? getRecord.prayers + 1 : 1;
+        const putParams = {
+            TableName: "Church",
+            Item: {
+                uid: { S: user },
+                prayers: { N: `${newPrayerValue}` },
+                ts: { S: new Date().toString() }
+            },
+            ReturnValues: "ALL_OLD", //Has to be all old or none
+        }
+        const putResponse = await client.send(new PutItemCommand(putParams));
+        console.info("Response from Dynamodb", putResponse);
+        if (putResponse.$metadata.httpStatusCode == 200) {
+            response.body.embeds = [
+                {
+                    "type": "rich",
+                    "title": `Prayer Successful!`,
+                    "description": `You are degeneracy manifest!\n\n**Prayer Level :** ${newPrayerValue - 1} -> :sparkles: **${newPrayerValue}** :sparkles:\n\nYou feel a little luckier...`,
+                    "color": 0x676868,
+                    "footer": {
+                        "text": `Thank you for praying to the Church of Degen`
+                    }
                 }
-            }
-        ];
+            ];
+        } else {
+            response.body.content = `Prayer Failed! Yell at Sam to fix the bot!`;
+        }
     } else {
-        response.body.content = `Prayer Failed! Yell at Sam to fix the bot!`;
+        response.body.content = "You are praying too fast. please wait 5 minutes between each prayer";
     }
+
 
     const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
     await rest.patch(Routes.webhookMessage(body.application_id, body.token), response)

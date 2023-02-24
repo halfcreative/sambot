@@ -1,12 +1,12 @@
 {
-  "name": "pray",
+  "name": "church",
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "pray.js",
+  "main": "church.js",
   "scripts": {
     "cleanOldZip": "rm ../../exports/church.zip",
-    "zip": "zip -r ../../exports/pray.zip *"
+    "zip": "zip -r ../../exports/church.zip *"
   },
   "author": "",
   "license": "ISC",

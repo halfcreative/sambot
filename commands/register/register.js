@@ -50,6 +50,11 @@ for (let guild of GUILDS) {
                     required: true
                 }
             ]
+        },
+        {
+            "name": "church",
+            "type": 1,
+            "description": "Visit the church of degen"
         }
     ]
 
